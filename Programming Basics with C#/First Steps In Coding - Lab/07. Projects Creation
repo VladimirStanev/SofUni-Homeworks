@@ -1,0 +1,16 @@
+using System;
+
+namespace _07._Projects_Creation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            String nameOfArchitect = Console.ReadLine();
+            int countOfProjects = int.Parse(Console.ReadLine());
+            int hoursForOneProject = 3 * countOfProjects;
+
+            Console.WriteLine($" The architect {nameOfArchitect} will need {hoursForOneProject} hours to complete {countOfProjects} project/s. "); 
+        }
+    }
+}

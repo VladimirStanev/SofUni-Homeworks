@@ -1,0 +1,21 @@
+using System;
+
+namespace _09.YardGreening
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double priceForOneSquareMeter = 7.61;                       //The firm offers 18% off the final price!!!
+
+            double squareMetersForOzelenqvane = double.Parse(Console.ReadLine());
+
+            double priceForOzelenqvane = squareMetersForOzelenqvane * priceForOneSquareMeter;
+            double priceOfDiscount = priceForOzelenqvane * 0.18;
+            double priceAfterDiscount = priceForOzelenqvane - priceOfDiscount;
+
+            Console.WriteLine($"The final price is: {priceAfterDiscount} lv.");
+            Console.WriteLine($"The discount is: {priceOfDiscount} lv.");
+        }
+    }
+}
