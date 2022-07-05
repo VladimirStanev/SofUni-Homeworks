@@ -1,0 +1,35 @@
+using System;
+
+namespace _05.SuppliesforSchool
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double priceForPens = 5.8;
+            double priceForMarkers = 7.2;
+            double priceForPreparat = 1.2;
+
+            //Input
+            int numberOfPens = int.Parse(Console.ReadLine());
+            int numberOfMarkers = int.Parse(Console.ReadLine());
+            int litresOfPreparati = int.Parse(Console.ReadLine());
+            int percent = int.Parse(Console.ReadLine());
+
+            //Calculations
+
+            double FinalpriceForPens = priceForPens * numberOfPens;
+            double FinalpriceForMarkers = priceForMarkers * numberOfMarkers;
+            double FinalpriceForPreparati = litresOfPreparati * priceForPreparat;
+
+            double priceForEverything = FinalpriceForMarkers + FinalpriceForPens + FinalpriceForPreparati;
+
+            double Finalprice = priceForEverything - (priceForEverything * percent / 100);
+
+            //Output
+
+            Console.WriteLine(Finalprice);
+
+        }
+    }
+}

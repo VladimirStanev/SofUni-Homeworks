@@ -1,0 +1,21 @@
+using System;
+
+namespace _09._Fish_Tank
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double lenght = double.Parse(Console.ReadLine()) / 10;
+            double widht = double.Parse(Console.ReadLine()) / 10;
+            double height = double.Parse(Console.ReadLine()) / 10;
+            double percent = double.Parse(Console.ReadLine()) / 100;
+
+            double volumeOfTank = lenght * widht * height;
+            double volumeOfObjectsInTank = volumeOfTank * percent;
+            double litresOfWater = volumeOfTank - volumeOfObjectsInTank;
+
+            Console.WriteLine(litresOfWater);
+        }
+    }
+}

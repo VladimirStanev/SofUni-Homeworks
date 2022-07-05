@@ -1,0 +1,27 @@
+using System;
+
+namespace _07._Food_Delivery
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double priceForChickenMenu = 10.35;
+            double priceForFishMenu = 12.40;
+            double priceForVegeterianMenu = 8.15;
+            double priceForDelivery = 2.50;
+
+            //Input
+            int qtyChickenMenus = int.Parse(Console.ReadLine());
+            int qtyFishMenus = int.Parse(Console.ReadLine());
+            int qtyVegeterianMenus = int.Parse(Console.ReadLine());
+
+            //Calculations
+            double priceForMenus = (priceForChickenMenu * qtyChickenMenus) + (priceForFishMenu * qtyFishMenus) + (priceForVegeterianMenu * qtyVegeterianMenus);
+            double priceForDesert = priceForMenus * 0.2;
+            double priceForOrder = priceForMenus + priceForDesert + priceForDelivery;
+
+            Console.WriteLine(priceForOrder);
+        }
+    }
+}
