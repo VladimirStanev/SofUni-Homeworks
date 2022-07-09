@@ -1,0 +1,40 @@
+using System;
+
+namespace _07.AreaofFigures
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            String figure = Console.ReadLine();
+            double a = 0;
+            double b = 0;
+            double area = 0;
+
+            if(figure == "square")
+            {
+                a = double.Parse(Console.ReadLine());
+                area = a * a;
+            }
+            else if(figure == "circle")
+            {
+                a = double.Parse(Console.ReadLine());
+                area = a * Math.PI * a;
+            }
+            else if(figure == "rectangle")
+            {
+                a = double.Parse(Console.ReadLine());
+                b = double.Parse(Console.ReadLine());
+                area = a * b;
+            }
+            else if (figure == "triangle")
+            {
+                a = double.Parse(Console.ReadLine());
+                b = double.Parse(Console.ReadLine());
+                area = (a * b) / 2;
+            }
+
+            Console.WriteLine($"{area:F3}");
+        }
+    }
+}
