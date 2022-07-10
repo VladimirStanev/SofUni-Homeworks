@@ -1,0 +1,36 @@
+using System;
+
+namespace _07.Shopping
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            int videoCards = int.Parse(Console.ReadLine());
+            int procesors = int.Parse(Console.ReadLine());
+            int ramMemory = int.Parse(Console.ReadLine());
+
+            int priceFor1VideoCard = 250;
+            double priceForVideoCards = priceFor1VideoCard * videoCards;
+            double priceForProcesor = priceForVideoCards * 0.35;
+            double priceForRamMemory = priceForVideoCards * 0.1;
+
+            double totalPrice = priceForVideoCards + (priceForProcesor * procesors) + (priceForRamMemory * ramMemory);
+
+            if(videoCards > procesors)
+            {
+                totalPrice = totalPrice - (0.15 * totalPrice);
+            }
+
+            if(budget >= totalPrice)
+            {
+                Console.WriteLine($"You have {(budget - totalPrice):f2} leva left!");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough money! You need {(totalPrice - budget):f2} leva more!");
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+using System;
+
+namespace _08.LunchBreak
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            String nameOfTheShow = Console.ReadLine();
+            double lenghtOfAnEpisode = double.Parse(Console.ReadLine());
+            double timetOfRest = double.Parse(Console.ReadLine());
+
+            double timeForLunch = timetOfRest / 8;
+            double timeToRelax = timetOfRest / 4;
+            double occupiedTime = timeForLunch + timeToRelax;
+            double leftTime = (timetOfRest - occupiedTime);
+            
+            if(lenghtOfAnEpisode <= leftTime)
+            {
+                Console.WriteLine($"You have enough time to watch {nameOfTheShow} and left with {Math.Ceiling(leftTime - lenghtOfAnEpisode)} minutes free time.");
+            }
+            else
+            {
+                Console.WriteLine($"You don't have enough time to watch {nameOfTheShow}, you need {Math.Ceiling(lenghtOfAnEpisode - leftTime)} more minutes.");
+            }
+        }
+    }
+}

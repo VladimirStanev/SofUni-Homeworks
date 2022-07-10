@@ -1,0 +1,51 @@
+using System;
+
+namespace _04.ToyShop
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double priceForPuzzle = 2.6;
+            double priceForDoll = 3;
+            double priceForBear = 4.1;
+            double priceForMinion = 8.2;
+            double priceForTruck = 2;
+
+            int numberOfToys = 0;
+            double totalOfMoneyRecieved = 0;
+
+            // Input
+            double priceForTrip = double.Parse(Console.ReadLine());
+            int numberofPuzzles = int.Parse(Console.ReadLine());
+            int numberOfDolls = int.Parse(Console.ReadLine());
+            int numberOfBears = int.Parse(Console.ReadLine());
+            int numberOfMinions = int.Parse(Console.ReadLine());
+            int numberOfTrucks = int.Parse(Console.ReadLine());
+
+            numberOfToys = numberofPuzzles + numberOfDolls + numberOfBears + numberOfMinions + numberOfTrucks;
+            totalOfMoneyRecieved = (numberofPuzzles * priceForPuzzle) + (numberOfDolls * priceForDoll) + 
+                                   (numberOfBears * priceForBear) + (numberOfMinions * priceForMinion) + 
+                                   (numberOfTrucks * priceForTruck);
+
+            if(numberOfToys >= 50)
+            {
+                totalOfMoneyRecieved = totalOfMoneyRecieved - (totalOfMoneyRecieved * 0.25);
+                totalOfMoneyRecieved = totalOfMoneyRecieved - (totalOfMoneyRecieved * 0.1);
+            }
+            else
+            {
+                totalOfMoneyRecieved = totalOfMoneyRecieved - (totalOfMoneyRecieved * 0.1);
+            }
+            
+            if(priceForTrip <= totalOfMoneyRecieved)
+            {
+                Console.WriteLine($"Yes! {(totalOfMoneyRecieved - priceForTrip):f2} lv left.");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough money! {(priceForTrip - totalOfMoneyRecieved):f2} lv needed.");
+            }
+        }
+    }
+}

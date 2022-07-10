@@ -1,0 +1,29 @@
+using System;
+
+namespace _06.WorldSwimmingRecord
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double recordInSeconds = double.Parse(Console.ReadLine());
+            double lenghtInMeters = double.Parse(Console.ReadLine());
+            double timeInSecondsFor1Meter = double.Parse(Console.ReadLine());
+
+            double timeForSwimming = timeInSecondsFor1Meter * lenghtInMeters;
+            double extraTime = Math.Floor(lenghtInMeters / 15) * 12.5;
+
+            double timeForAll = timeForSwimming + extraTime;
+            double differenceBetweenTimes = Math.Abs(recordInSeconds - timeForAll);
+           
+            if(recordInSeconds > timeForAll)
+            {
+                Console.WriteLine($"Yes, he succeeded! The new world record is {timeForAll:f2} seconds.");
+            }
+            else
+            {
+                Console.WriteLine($"No, he failed! He was {differenceBetweenTimes:f2} seconds slower.");
+            }
+        }
+    }
+}
