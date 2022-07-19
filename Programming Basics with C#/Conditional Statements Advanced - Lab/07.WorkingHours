@@ -1,0 +1,55 @@
+using System;
+
+namespace _07.WorkingHours
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int hours = int.Parse(Console.ReadLine());
+            string day = Console.ReadLine();
+            string result = "closed";
+
+            switch (day)
+            {
+                case "Monday":
+                    if(hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+                case "Tuesday":
+                    if (hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+                case "Wednesday":
+                    if (hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+                case "Thursday":
+                    if (hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+                case "Friday":
+                    if (hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+                case "Saturday":
+                    if (hours >= 10 && hours <= 18)
+                    {
+                        result = "open";
+                    }
+                    break;
+            }
+            Console.WriteLine(result);
+        }   
+    }
+}

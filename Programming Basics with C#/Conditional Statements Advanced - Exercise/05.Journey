@@ -1,0 +1,52 @@
+using System;
+
+namespace _05.Journey
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            string seasons = Console.ReadLine();
+            string destination = string.Empty;
+            double moneyForVacation = 0;
+            string lodging = string.Empty;
+            if (budget <= 100)
+            {
+                destination = "Bulgaria";
+                if(seasons == "summer")
+                {
+                    moneyForVacation = budget * 0.3;
+                    lodging = "Camp";
+                }
+                if(seasons == "winter")
+                {
+                    moneyForVacation = budget * 0.7;
+                    lodging = "Hotel";
+                }
+            }
+            else if (budget > 100 && budget <= 1000)
+            {
+                destination = "Balkans";
+                if (seasons == "summer")
+                {
+                    moneyForVacation = budget * 0.4;
+                    lodging = "Camp";
+                }
+                if (seasons == "winter")
+                {
+                    moneyForVacation = budget * 0.8;
+                    lodging = "Hotel";
+                }
+            }
+            else
+            {
+                destination = "Europe";
+                moneyForVacation = budget * 0.9;
+                lodging = "Hotel";
+            }
+            Console.WriteLine($"Somewhere in {destination}");
+            Console.WriteLine($"{lodging} - {Math.Round(moneyForVacation, 2):f2}");
+        }
+    }
+}
