@@ -1,0 +1,85 @@
+using System;
+
+namespace _06.OperationsBetweenNumbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double number1 = int.Parse(Console.ReadLine());
+            double number2 = int.Parse(Console.ReadLine());
+            string operation = Console.ReadLine();
+
+            bool isValid = (operation == "+" || operation == "-" || 
+                            operation == "*" || operation == "/" || 
+                            operation == "%");
+            double result = 0;
+
+            if (operation == "+")
+            {
+                result = number1 + number2;
+
+                if ((number1 + number2) % 2 == 0)
+                { 
+                Console.WriteLine($"{number1} + {number2} = {result} - even");
+                }
+                else
+                {
+                    Console.WriteLine($"{number1} + {number2} = {result} - odd");
+                }
+            }
+            else if (operation == "-")
+            {
+                result = number1 - number2;
+
+                if ((number1 - number2) % 2 == 0)
+                {
+                    Console.WriteLine($"{number1} - {number2} = {result} - even");
+                }
+                else
+                {
+                    Console.WriteLine($"{number1} - {number2} = {result} - odd");
+                }
+            }
+            else if (operation == "*")
+            {
+                result = number1 * number2;
+
+                if ((number1 * number2) % 2 == 0)
+                {
+                    Console.WriteLine($"{number1} * {number2} = {result} - even");
+                }
+                else
+                {
+                    Console.WriteLine($"{number1} * {number2} = {result} - odd");
+                }
+            }
+            else if (operation == "/")
+            {
+                if (number2 == 0)
+                {
+                    Console.WriteLine($"Cannot divide {number1} by zero");
+                }
+                else
+                {
+                    result = number1 / number2;
+
+                    Console.WriteLine($"{number1} / {number2} = {(result):f2}");
+                }
+            }
+            else if (operation == "%")
+            {
+                if (number2 == 0)
+                {
+                    Console.WriteLine($"Cannot divide {number1} by zero");
+                }
+                else
+                {
+                    result = number1 % number2;
+
+                    Console.WriteLine($"{number1} % {number2} = {result}");
+                }
+            }
+        }
+    }
+}
