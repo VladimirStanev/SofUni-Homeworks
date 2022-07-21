@@ -1,0 +1,67 @@
+using System;
+
+namespace _09.SkiTrip
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int daysForRest = int.Parse(Console.ReadLine());           
+            string placeToStay = Console.ReadLine();
+            string rating = Console.ReadLine();
+
+            int nightsSpent = daysForRest - 1;
+            double finalPrice = 0;
+
+            double priceForRoomForOne = 18.00;
+            double priceForApartment = 25.00;
+            double priceForPresidentApartment = 35.00;
+
+            if(placeToStay == "room for one person")
+            {
+                finalPrice = priceForRoomForOne * nightsSpent;              
+            }
+            else if(placeToStay == "apartment")
+            {
+                finalPrice = priceForApartment * nightsSpent;
+                if (nightsSpent < 10)
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.30);
+                }
+                else if (nightsSpent >= 10 && nightsSpent <= 15)
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.35);
+                }
+                else
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.50);
+                }
+            }
+            else if (placeToStay == "president apartment")
+            {
+                finalPrice = priceForPresidentApartment * nightsSpent;
+                if (nightsSpent < 10)
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.10);
+                }
+                else if (nightsSpent >= 10 && nightsSpent <= 15)
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.15);
+                }
+                else
+                {
+                    finalPrice = finalPrice - (finalPrice * 0.20);
+                }
+            }
+            if (rating == "positive")
+            {
+                finalPrice = finalPrice + (finalPrice * 0.25);
+            }
+            else if (rating == "negative")
+            {
+                finalPrice = finalPrice - (finalPrice * 0.10);
+            }
+            Console.WriteLine($"{(finalPrice):f2}");
+        }
+    }
+}

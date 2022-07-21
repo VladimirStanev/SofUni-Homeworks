@@ -1,0 +1,58 @@
+using System;
+
+namespace _07.HotelRoom
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string month = Console.ReadLine();
+            int daysToSleep = int.Parse(Console.ReadLine());
+
+            double priceForStudio = 0;
+            double priceForApartment = 0;
+            double finalPriceForStudio = 0;
+            double finalPriceForApartment = 0;
+
+            if (month == "October" || month == "May")
+            {
+                priceForApartment = 65;
+                priceForStudio = 50;
+                finalPriceForApartment = priceForApartment * daysToSleep;
+                finalPriceForStudio = priceForStudio * daysToSleep;
+                if (daysToSleep > 7 && daysToSleep <= 14)
+                {
+                    finalPriceForStudio = finalPriceForStudio - (finalPriceForStudio * 0.05);
+                }
+                if (daysToSleep > 14)
+                {
+                    finalPriceForStudio = finalPriceForStudio - (finalPriceForStudio * 0.30);
+                }
+            }
+            else if(month == "June" || month == "September")
+            {
+                priceForApartment = 68.70;
+                priceForStudio = 75.20;
+                finalPriceForApartment = priceForApartment * daysToSleep;
+                finalPriceForStudio = priceForStudio * daysToSleep;
+                if (daysToSleep > 14)
+                {
+                    finalPriceForStudio = finalPriceForStudio - (finalPriceForStudio * 0.20);
+                }
+            }
+            else if (month == "July" || month == "August")
+            {
+                priceForApartment = 77;
+                priceForStudio = 76;
+                finalPriceForApartment = priceForApartment * daysToSleep;
+                finalPriceForStudio = priceForStudio * daysToSleep;
+            }
+            if (daysToSleep > 14)
+            {
+                finalPriceForApartment = finalPriceForApartment - (finalPriceForApartment * 0.10);
+            }
+            Console.WriteLine($"Apartment: {(finalPriceForApartment):f2} lv.");
+            Console.WriteLine($"Studio: {(finalPriceForStudio):f2} lv.");
+        }
+    }
+}
