@@ -1,0 +1,43 @@
+using System;
+
+namespace _04.CleverLily
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age = int.Parse(Console.ReadLine());
+            double priceForWashingM = double.Parse(Console.ReadLine());
+            double priceForToy = int.Parse(Console.ReadLine());
+
+            int numberOfToys = 0;
+            double birthdayMoney = 0;
+            double savedMoney =0;
+            int earlyAmount = 10;
+
+            for (int i = 1; i <= age; i++)
+            {
+                if(i % 2 == 0)
+                {
+                    birthdayMoney += earlyAmount;
+                    earlyAmount += 10;
+                    birthdayMoney -= 1;
+                }
+                else
+                {
+                    numberOfToys += 1;
+                }              
+            }
+            savedMoney = birthdayMoney + (priceForToy * numberOfToys);
+
+            if(savedMoney >= priceForWashingM)
+            {
+                Console.WriteLine($"Yes! {(savedMoney - priceForWashingM):f2}");
+            }
+            else
+            {
+                Console.WriteLine($"No! {(priceForWashingM - savedMoney):f2}");
+            }
+        }
+    }
+}

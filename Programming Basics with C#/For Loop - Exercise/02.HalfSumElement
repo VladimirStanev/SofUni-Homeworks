@@ -1,0 +1,35 @@
+using System;
+
+namespace _02.HalfSumElement
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfNums = int.Parse(Console.ReadLine());
+            int maxNumber = int.MinValue;
+            int sum = 0;
+
+            for(int i = 1; i <= numberOfNums; i++)
+            {
+                int number = int.Parse(Console.ReadLine());
+                sum = sum + number;
+                if(number > maxNumber)
+                {
+                    maxNumber = number;
+                }               
+            } 
+            int sumOfOthers = sum - maxNumber;
+            if (maxNumber == sumOfOthers)
+            {
+                Console.WriteLine("Yes");
+                Console.WriteLine($"Sum = {sumOfOthers}");
+            }
+            else
+            {
+                Console.WriteLine("No");
+                Console.WriteLine($"Diff = {Math.Abs(maxNumber - sumOfOthers)}");
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+using System;
+
+namespace _07.TrekkingMania
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfGroups = int.Parse(Console.ReadLine());
+            int groupMusala = 0;
+            int groupMonblan = 0;
+            int groupKilimin = 0;
+            int groupK2 = 0;
+            int groupEverest = 0;
+
+            for (int i = 0; i < numberOfGroups; i++)
+            {
+                int numberOfMembers = int.Parse(Console.ReadLine());
+                if (numberOfMembers <= 5)
+                {
+                    groupMusala += numberOfMembers;
+                }
+                else if(numberOfMembers >= 6 && numberOfMembers <= 12)
+                {
+                    groupMonblan += numberOfMembers;
+                }
+                else if (numberOfMembers >= 13 && numberOfMembers <= 25)
+                {
+                    groupKilimin += numberOfMembers;
+                }
+                else if (numberOfMembers >= 26 && numberOfMembers <= 40)
+                {
+                    groupK2 += numberOfMembers;
+                }
+                else
+                {
+                    groupEverest += numberOfMembers;
+                }
+            }
+            double allClimbers = groupEverest + groupK2 + groupKilimin +
+                                 groupMonblan + groupMusala;
+
+            Console.WriteLine($"{((groupMusala * 1.0) / allClimbers * 100):f2}%");
+            Console.WriteLine($"{((groupMonblan * 1.0) / allClimbers * 100):f2}%");
+            Console.WriteLine($"{((groupKilimin * 1.0) / allClimbers * 100):f2}%");
+            Console.WriteLine($"{((groupK2 * 1.0) / allClimbers * 100):f2}%");
+            Console.WriteLine($"{((groupEverest * 1.0) / allClimbers * 100):f2}%");
+        }
+    }
+}
