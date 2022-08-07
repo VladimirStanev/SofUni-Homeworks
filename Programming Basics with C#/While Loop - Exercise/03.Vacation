@@ -1,0 +1,53 @@
+using System;
+
+namespace _03.Vacation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double moneyForTrip = double.Parse(Console.ReadLine());
+            double moneyAtTheMoment = double.Parse(Console.ReadLine());
+            int days = 0;
+            int numOfSpendDays = 0;
+
+            while(moneyAtTheMoment < moneyForTrip)
+            {
+                string decision = Console.ReadLine();
+                double operationMoney = double.Parse(Console.ReadLine());
+                days++;
+
+                if (decision == "spend")
+                {
+                    moneyAtTheMoment -= operationMoney;
+                    numOfSpendDays++;
+                    
+
+                    if(moneyAtTheMoment < 0)
+                    {
+                        moneyAtTheMoment = 0;
+                    }
+                    if(numOfSpendDays == 5)
+                    {
+                        break;
+                        
+                    }
+                }
+                else if(decision == "save")
+                {
+                    moneyAtTheMoment += operationMoney;
+                    numOfSpendDays = 0;                
+                }            
+            }
+            if (numOfSpendDays == 5)
+            {
+                Console.WriteLine("You can't save the money.");
+                Console.WriteLine(numOfSpendDays);
+            }
+            else if(moneyAtTheMoment >= moneyForTrip)
+            {
+                Console.WriteLine($"You saved the money for {days} days.");
+            }
+        } 
+    }
+}

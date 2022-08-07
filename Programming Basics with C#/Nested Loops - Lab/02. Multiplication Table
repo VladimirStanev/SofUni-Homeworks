@@ -1,0 +1,18 @@
+using System;
+
+namespace _02._Multiplication_Table
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for(int number = 1; number <= 10; number++)
+            {
+                for(int numberTwo = 1; numberTwo <= 10; numberTwo++)
+                {
+                    Console.WriteLine($"{number} * {numberTwo} = {number * numberTwo}");
+                }
+            }
+        }
+    }
+}

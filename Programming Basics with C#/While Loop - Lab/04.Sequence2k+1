@@ -1,0 +1,20 @@
+using System;
+
+namespace _04.Sequence2k_1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double n = double.Parse(Console.ReadLine());
+            int value = 1;
+
+            while(n >= value)
+            {
+                Console.WriteLine(value);
+                value *= 2;
+                value += 1;
+            }
+        }
+    }
+}

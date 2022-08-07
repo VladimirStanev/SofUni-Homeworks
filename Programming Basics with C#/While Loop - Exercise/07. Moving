@@ -1,0 +1,32 @@
+using System;
+
+namespace _07._Moving
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int widthOfFreeSpace = int.Parse(Console.ReadLine());
+            int lenghtOfFreeSpace = int.Parse(Console.ReadLine());
+            int heightOfFreeSpace = int.Parse(Console.ReadLine());
+
+            int volumeOfFreeSpace = widthOfFreeSpace * heightOfFreeSpace * lenghtOfFreeSpace;
+            int volumeOfOneBox = 1;
+
+            while(volumeOfFreeSpace >= volumeOfOneBox)
+            {
+                string command = Console.ReadLine();
+                if(command == "Done")
+                {
+                    Console.WriteLine($"{volumeOfFreeSpace} Cubic meters left.");
+                    break;
+                }
+                volumeOfFreeSpace -= int.Parse(command);
+            }
+            if(volumeOfFreeSpace < volumeOfOneBox)
+            {
+                Console.WriteLine($"No more free space! You need {Math.Abs(volumeOfFreeSpace)} Cubic meters more.");
+            }
+        }
+    }
+}

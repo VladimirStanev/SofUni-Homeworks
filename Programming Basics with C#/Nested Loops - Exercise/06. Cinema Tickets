@@ -1,0 +1,68 @@
+using System;
+
+namespace _06._Cinema_Tickets
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string movie = Console.ReadLine();
+            double allMovieTickets = 0;
+            double allStudentTickets = 0;
+            double allStandardTickets = 0;
+            double allKidsTickets = 0;
+
+            while(movie != "Finish")
+            {
+                double numOfSeats = int.Parse(Console.ReadLine());
+                string typeOfBillet = Console.ReadLine();
+
+                double numOfAllSeats = numOfSeats;
+                double standardTickets = 0;
+                double studentTickets = 0;
+                double kidsTickets = 0;
+                double allTickets = 0;
+                while(typeOfBillet != "End" && numOfSeats > 0 )
+                {                 
+                    if(typeOfBillet == "Finish")
+                    {
+                        break;
+                    }
+                    if(typeOfBillet == "student")
+                    {
+                        studentTickets++;
+                        numOfSeats--;
+                    }
+                    else if(typeOfBillet == "standard")
+                    {
+                        standardTickets++;
+                        numOfSeats--;
+                    }
+                    else if(typeOfBillet == "kid")
+                    {
+                        kidsTickets++;
+                        numOfSeats--;
+                    }
+                    typeOfBillet = Console.ReadLine();
+                }              
+                allTickets = standardTickets + studentTickets + kidsTickets;
+
+                allMovieTickets += allTickets;
+                allStudentTickets += studentTickets;
+                allStandardTickets += standardTickets;
+                allKidsTickets += kidsTickets;
+
+                Console.WriteLine($"{movie} - {(allTickets / numOfAllSeats * 100):f2}% full.");
+                if (typeOfBillet == "Finish")
+                {
+                    break;
+                }
+                movie = Console.ReadLine();
+            }
+            Console.WriteLine($"Total tickets: {allMovieTickets}");
+            Console.WriteLine($"{(allStudentTickets / allMovieTickets * 100):f2}% student tickets.");
+            Console.WriteLine($"{(allStandardTickets / allMovieTickets * 100):f2}% standard tickets.");
+            Console.WriteLine($"{(allKidsTickets / allMovieTickets * 100):f2}% kids tickets.");
+        }
+    }
+}

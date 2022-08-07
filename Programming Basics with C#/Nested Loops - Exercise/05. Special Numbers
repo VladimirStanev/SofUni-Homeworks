@@ -1,0 +1,36 @@
+using System;
+
+namespace _05._Special_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+
+            for(int i = 1111; i <= 9999; i++)
+            {
+                bool isSpecial = true;
+                string currentNumber = i.ToString();
+                for (int x = 0; x < currentNumber.Length; x++)
+                {
+                    int currentDigit = int.Parse(currentNumber[x].ToString());
+                    if(currentDigit == 0)
+                    {
+                        isSpecial = false;
+                        continue;
+                    }
+                    if(number % currentDigit != 0)
+                    {
+                        isSpecial = false;
+                    }
+                    
+                }
+                if (isSpecial)
+                {
+                    Console.Write($"{i} ");
+                }
+            }
+        }
+    }
+}

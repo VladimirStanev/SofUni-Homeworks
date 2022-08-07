@@ -1,0 +1,43 @@
+using System;
+
+namespace _04.Walking
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int goal = 10000;
+            int stepsDuringDay = 0;
+
+
+            while(stepsDuringDay <= goal)
+            {
+                string command = Console.ReadLine();
+                if(command == "Going home")
+                {
+                    int stepsToHerHome = int.Parse(Console.ReadLine());
+                    stepsDuringDay += stepsToHerHome;                  
+                    break;
+                }
+                else
+                {
+                    int stepsDone = int.Parse(command);
+                    stepsDuringDay += stepsDone;
+                    if (stepsDuringDay >= goal)
+                    {
+                        break;
+                    }                             
+                }
+            }
+            if(stepsDuringDay >= goal)
+            {
+                Console.WriteLine("Goal reached! Good job!");
+                Console.WriteLine($"{stepsDuringDay - goal} steps over the goal!");
+            }
+            else
+            {
+                Console.WriteLine($"{goal - stepsDuringDay} more steps to reach goal.");
+            }
+        }
+    }
+}

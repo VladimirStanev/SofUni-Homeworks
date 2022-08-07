@@ -1,0 +1,34 @@
+using System;
+
+namespace _04._Train_The_Trainers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int peopleInJury = int.Parse(Console.ReadLine());
+            string nameOfPresentation = Console.ReadLine();
+
+            int countOfSubjects = 0;
+            double gradesOfAll = 0;
+
+            while(nameOfPresentation != "Finish")
+            {
+                double gradeForSubject = 0;
+                for(int ppl = 0; ppl < peopleInJury; ppl++)
+                {
+                    double grade = double.Parse(Console.ReadLine());
+                    gradeForSubject += grade;                  
+                }
+                gradeForSubject /= peopleInJury;
+                gradesOfAll += gradeForSubject;
+                countOfSubjects++;
+
+                Console.WriteLine($"{nameOfPresentation} - {(gradeForSubject):f2}.");
+                
+                nameOfPresentation = Console.ReadLine();
+            }
+            Console.WriteLine($"Student's final assessment is {(gradesOfAll / countOfSubjects):f2}.");
+        }
+    }
+}

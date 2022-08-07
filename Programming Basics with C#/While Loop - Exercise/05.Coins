@@ -1,0 +1,66 @@
+using System;
+
+namespace _05.Coins
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double change = double.Parse(Console.ReadLine());
+            int numOfCoins = 0;
+
+            while(change > 0)
+            {
+                if(change >= 2)
+                {
+                    numOfCoins++;
+                    change -= 2;
+                    change = Math.Round(change, 2);
+                }
+                else if(change >= 1 && change < 2)
+                {
+                    change -= 1;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if(change < 1 && change >= 0.50)
+                {
+                    change -= 0.50;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if(change < 0.50 && change >= 0.20)
+                {
+                    change -= 0.20;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if (change < 0.20 && change >= 0.10)
+                {
+                    change -= 0.10;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if (change < 0.10 && change >= 0.05)
+                {
+                    change -= 0.05;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if (change < 0.05 && change >= 0.02)
+                {
+                    change -= 0.02;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+                else if (change < 0.02 && change >= 0.01)
+                {
+                    change -= 0.01;
+                    numOfCoins++;
+                    change = Math.Round(change, 2);
+                }
+            }
+            Console.WriteLine(numOfCoins);
+        }
+    }
+}
