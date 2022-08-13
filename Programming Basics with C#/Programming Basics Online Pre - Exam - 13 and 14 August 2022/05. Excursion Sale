@@ -1,0 +1,47 @@
+using System;
+
+namespace _05._Excursion_Sale
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfSeaTrips = int.Parse(Console.ReadLine());
+            int numOfMountainTrips = int.Parse(Console.ReadLine());
+
+            double finalPrice = 0;
+
+            string choice = Console.ReadLine();
+            while(choice != "Stop")
+            {
+                if(choice == "sea")
+                {
+                    if(numOfSeaTrips == 0)
+                    {
+                        choice = Console.ReadLine();
+                        continue;
+                    }
+                    numOfSeaTrips --;
+                    finalPrice += 680;
+                }
+                if(choice == "mountain")
+                {
+                    if(numOfMountainTrips == 0)
+                    {
+                        choice= Console.ReadLine();
+                        continue;
+                    }
+                    numOfMountainTrips --;
+                    finalPrice += 499;
+                }
+                if(numOfSeaTrips == 0 && numOfMountainTrips == 0)
+                {
+                    Console.WriteLine("Good job! Everything is sold.");
+                    break;
+                }
+                choice = Console.ReadLine();
+            }
+            Console.WriteLine($"Profit: {finalPrice} leva.");
+        }
+    }
+}

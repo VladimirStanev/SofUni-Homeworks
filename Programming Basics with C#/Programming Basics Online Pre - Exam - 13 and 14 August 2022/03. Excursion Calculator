@@ -1,0 +1,58 @@
+using System;
+
+namespace _03._Excursion_Calculator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfPpl = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            double finalPrice = 0; 
+
+            if(numOfPpl <= 5)
+            {
+                if (season == "spring")
+                {
+                    finalPrice = 50.00 * numOfPpl;
+                }
+                if (season == "summer")
+                {
+                    finalPrice = 48.50 * numOfPpl;
+                    finalPrice = finalPrice - (0.15 * finalPrice);
+                }
+                if (season == "autumn")
+                {
+                    finalPrice = 60.00 * numOfPpl;
+                }
+                if (season == "winter")
+                {
+                    finalPrice = 86.00 * numOfPpl;
+                    finalPrice = finalPrice + (0.08 * finalPrice);
+                }
+            }
+            else
+            {
+                if (season == "spring")
+                {
+                    finalPrice = 48.00 * numOfPpl;
+                }
+                if (season == "summer")
+                {
+                    finalPrice = 45.00 * numOfPpl;
+                    finalPrice = finalPrice - (0.15 * finalPrice);
+                }
+                if (season == "autumn")
+                {
+                    finalPrice = 49.50 * numOfPpl;
+                }
+                if (season == "winter")
+                {
+                    finalPrice = 85.00 * numOfPpl;
+                    finalPrice = finalPrice + (0.08 * finalPrice);
+                }
+            }
+            Console.WriteLine($"{(finalPrice):f2} leva.");
+        }
+    }
+}

@@ -1,0 +1,35 @@
+using System;
+
+namespace _02._Godzilla_vs._Kong
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double recordTime = double.Parse(Console.ReadLine());
+            double metersToGo = double.Parse(Console.ReadLine());
+            double timeFor1Meter = double.Parse(Console.ReadLine());
+
+            double GeorgesTime = timeFor1Meter * metersToGo;
+            double howManyyTimes50MetersInTrack = 0;
+            double slowing = 0;
+            if(metersToGo >= 50)
+            {
+                howManyyTimes50MetersInTrack = Math.Floor(metersToGo / 50);
+                if(howManyyTimes50MetersInTrack >= 1)
+                {
+                    slowing = (howManyyTimes50MetersInTrack * 30);
+                }
+                GeorgesTime += slowing;
+            }
+            if(GeorgesTime < recordTime)
+            {
+                Console.WriteLine($"Yes! The new record is {(GeorgesTime):f2} seconds.");
+            }
+            else
+            {
+                Console.WriteLine($"No! He was {(GeorgesTime - recordTime):f2} seconds slower.");
+            }
+        }
+    }
+}

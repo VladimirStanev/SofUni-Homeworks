@@ -1,0 +1,47 @@
+using System;
+
+namespace _04._Computer_Firm
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfModels = int.Parse(Console.ReadLine());
+            double AverageRatings = 0;
+            double rating = 0;
+            double sales = 0;
+
+            for(int i = 0; i < numOfModels; i++)
+            {
+                int points = int.Parse(Console.ReadLine());
+                int possibleSales = points / 10;
+                int currentRating = points % 10;
+                rating += currentRating;
+                
+                if(currentRating == 2)
+                {
+                    sales += 0;
+                }
+                else if(currentRating == 3)
+                {
+                    sales += 0.5 * possibleSales;
+                }
+                else if (currentRating == 4)
+                {
+                    sales += 0.7 * possibleSales;
+                }
+                else if (currentRating == 5)
+                {
+                    sales += 0.85 * possibleSales;
+                }
+                else if (currentRating == 6)
+                {
+                    sales += possibleSales;
+                }
+            }
+            AverageRatings = rating / numOfModels;
+            Console.WriteLine($"{(sales):f2}");
+            Console.WriteLine($"{(AverageRatings):f2}");
+        }
+    }
+}

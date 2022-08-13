@@ -1,0 +1,25 @@
+using System;
+
+namespace _01_Christmas_Preparation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double numOfPaper = double.Parse(Console.ReadLine());
+            double numOffabric = double.Parse(Console.ReadLine());
+            double numOfGlue = double.Parse(Console.ReadLine());
+            double percentOfDiscount = double.Parse(Console.ReadLine());
+
+            double paperPrice = 5.80;
+            double fabricPrice = 7.20;
+            double gluePrice = 1.20;
+
+            double total = (numOfPaper * paperPrice) + (numOfGlue * gluePrice) +
+                           (numOffabric * fabricPrice);
+            double discount = total * percentOfDiscount / 100;
+            double finalPrice = total - discount;
+            Console.WriteLine($"{(finalPrice):f3}");
+        }
+    }
+}

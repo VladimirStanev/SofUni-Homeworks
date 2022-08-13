@@ -1,0 +1,20 @@
+using System;
+
+namespace _01._Oscars_ceremony
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int rent = int.Parse(Console.ReadLine());
+
+            double statues = rent - (0.3 * rent);
+            double kettering = statues - (0.15 * statues);
+            double voiceOver = kettering / 2;
+
+            double sumOfAll = rent + statues + voiceOver + kettering;
+
+            Console.WriteLine($"{(sumOfAll):f2}");
+        }
+    }
+}
