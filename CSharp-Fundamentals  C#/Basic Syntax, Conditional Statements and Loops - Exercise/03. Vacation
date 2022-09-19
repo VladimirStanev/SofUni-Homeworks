@@ -1,0 +1,87 @@
+using System;
+
+namespace _03._Vacation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfPpl = int.Parse(Console.ReadLine());
+            string typeOfGroup = Console.ReadLine();
+            string day = Console.ReadLine();
+            double price = 0;
+
+            if(typeOfGroup == "Students")
+            {
+                if(day == "Friday")
+                {
+                    price = numOfPpl * 8.45;
+                }
+                else if(day == "Saturday")
+                {
+                    price = numOfPpl * 9.80;
+                }
+                else if(day == "Sunday")
+                {
+                    price = numOfPpl * 10.46;
+                }
+            }
+            else if(typeOfGroup == "Business")
+            {
+                if(day == "Friday")
+                {
+                    price = numOfPpl * 10.90;
+                }
+                else if(day == "Saturday")
+                {
+                    price = numOfPpl * 15.60;
+                }
+                else if(day == "Sunday")
+                {
+                    price = numOfPpl * 16;
+                }
+            }
+            else if(typeOfGroup == "Regular")
+            {
+                if(day == "Friday")
+                {
+                    price = numOfPpl * 15;
+                }
+                else if(day == "Saturday")
+                {
+                    price = numOfPpl * 20;
+                }
+                else if(day == "Sunday")
+                {
+                    price = numOfPpl * 22.50;
+                }
+            }
+
+            if(numOfPpl >= 30 && typeOfGroup == "Students")
+            {
+                price = price - 0.15 * price;
+            }
+            if(numOfPpl >= 100 && typeOfGroup == "Business")
+            {
+                if(day == "Friday")
+                {
+                    price -= 10 * 10.90;
+                }
+                else if(day == "Saturday")
+                {
+                    price -= 10 * 15.60;
+                }
+                else if(day == "Sunday")
+                {
+                    price -= 10 * 16;
+                }
+            }
+            if(numOfPpl >= 10 && numOfPpl <= 20 && typeOfGroup == "Regular")
+            {
+                price = price - 0.05 * price;
+            }
+
+            Console.WriteLine($"Total price: {(price):f2}");
+        }
+    }
+}
