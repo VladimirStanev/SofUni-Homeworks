@@ -1,0 +1,30 @@
+using System;
+
+namespace _02._Vowels_Count
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number1 = int.Parse(Console.ReadLine());
+            int number2 = int.Parse(Console.ReadLine());
+            int number3 = int.Parse(Console.ReadLine());
+            int[] array1 = { number1, number2, number3 };
+            Console.WriteLine(BiggestNumber(array1));
+        }
+
+        public static int BiggestNumber(int[] random)
+        {
+            int smallestNum = int.MaxValue;
+            for (int i = 0; i < random.Length; i++)
+            {
+                int currentNum = random[i];
+                if (currentNum < smallestNum)
+                {
+                    smallestNum = currentNum;
+                }
+            }
+            return smallestNum;
+        }
+    }
+}

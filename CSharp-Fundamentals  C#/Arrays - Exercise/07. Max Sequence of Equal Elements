@@ -1,0 +1,45 @@
+using System;
+using System.Linq;
+
+namespace _07._Max_Sequence_of_Equal_Elements
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] array = Console.ReadLine()
+                        .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                        .ToArray();
+
+            string outputNum = string.Empty;
+            // string output = "";
+            int countOfRepetitions = 0;
+            for(int i = 0; i < array.Length; i++)
+            {
+                int currenCount = 0;
+                string current = array[i];
+                for(int j = i + 1; j < array.Length; j++)
+                {
+                    if(current == array[j])
+                    {
+                        currenCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }                   
+                }
+                if (currenCount > countOfRepetitions)
+                {
+                    countOfRepetitions = currenCount;
+                    outputNum = current;
+                }
+            }
+
+            for(int i = 0; i <= countOfRepetitions; i++)
+            {
+                Console.Write(outputNum + " ");
+            }
+        }
+    }
+}

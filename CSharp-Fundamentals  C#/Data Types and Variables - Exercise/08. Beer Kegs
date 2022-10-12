@@ -1,0 +1,31 @@
+using System;
+
+namespace _08._Beer_Kegs
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfKegs = int.Parse(Console.ReadLine());
+            double BiggestKegModel = 0;
+            string BiggestModel = "";
+
+            for(int i = 0; i < numberOfKegs; i++)
+            {
+                string kegModel = Console.ReadLine();
+                double radius = double.Parse(Console.ReadLine());
+                double height = double.Parse(Console.ReadLine());
+                double pi = Math.PI;
+
+                double kegVolume = pi * radius * radius * height;
+                
+                if(kegVolume > BiggestKegModel)
+                {
+                    BiggestKegModel = kegVolume;
+                    BiggestModel = kegModel;
+                }
+            }
+            Console.WriteLine(BiggestModel);
+        }
+    }
+}

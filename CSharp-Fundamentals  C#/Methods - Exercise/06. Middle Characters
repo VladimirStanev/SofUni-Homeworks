@@ -1,0 +1,33 @@
+using System;
+
+namespace _06._Middle_Characters
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            string midLetters = MiddleLettersInfo(text);
+            Console.WriteLine(midLetters);
+        }
+
+        static string MiddleLettersInfo(string text)
+        {
+            string middleLetter = string.Empty;
+            if(text.Length % 2 != 0)
+            {
+                int midPosition = text.Length / 2;
+                middleLetter = text[midPosition].ToString();
+                return middleLetter;
+            }
+            else
+            {
+                int firstMidLetterPosition = (text.Length / 2) - 1;
+                int secondMidLetterPosition = text.Length / 2;
+
+                middleLetter = text[firstMidLetterPosition].ToString() + text[secondMidLetterPosition].ToString();
+                return middleLetter;
+            }
+        }
+    }
+}

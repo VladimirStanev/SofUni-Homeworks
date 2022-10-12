@@ -1,0 +1,37 @@
+using System;
+
+namespace _03._Characters_in_Range
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char first = char.Parse(Console.ReadLine());
+            char second = char.Parse(Console.ReadLine());
+            ReturnChars(first, second);
+        }
+
+         static void ReturnChars(char first, char second)
+         {
+            int firstCharNum = (int)first;
+            int secondCharNum = (int)second;
+
+            if (firstCharNum < secondCharNum)
+            {
+                for(int i = firstCharNum + 1; i < secondCharNum; i++)
+                {
+                    char current = (char)i;
+                    Console.Write(current + " ");
+                }
+            }
+            else
+            {
+                for(int i = secondCharNum + 1; i < firstCharNum; i++)
+                {
+                    char current = (char)i;
+                    Console.Write(current + " ");
+                }
+            }
+        }
+    }
+}

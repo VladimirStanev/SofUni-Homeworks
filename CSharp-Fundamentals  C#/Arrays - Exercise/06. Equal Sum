@@ -1,0 +1,46 @@
+using System;
+using System.Linq;
+
+namespace _06.EqualSum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+            int counter = 0;
+            if(array.Length == 1)
+            {
+                Console.WriteLine(0);
+                return;
+            }
+            for (int i = 1; i < array.Length; i++)
+            {
+                int currentNum = array[i];
+                int leftSum = 0;
+                int rightSum = 0;
+                for(int j = 0; j <= i - 1; j++)
+                {
+                    leftSum += array[j];
+                }
+                for(int k = i + 1; k < array.Length; k++)
+                {
+                    rightSum += array[k];
+                }
+
+                if (leftSum == rightSum)
+                {
+                    Console.WriteLine(i);
+                    counter++;
+                }
+            }
+            if(counter == 0)
+            {
+                Console.WriteLine("no");
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+using System;
+using System.Linq;
+
+namespace _04._Array_Rotation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = Console.ReadLine()
+                  .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                  .Select(int.Parse)
+                  .ToArray();
+
+            int fstNumber = 0;
+            int rotations = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < rotations; i++)
+            {
+                fstNumber = array[0];
+
+                for(int j = 0; j < array.Length; j++)
+                {
+                    if(j == array.Length - 1)
+                    {
+                        array[j] = fstNumber;
+                        break;
+                    }
+                    array[j] = array[j + 1];
+                }
+            }
+            Console.WriteLine(String.Join(" ", array).TrimEnd());
+        }
+    }
+}

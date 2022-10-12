@@ -1,0 +1,28 @@
+using System;
+
+namespace _01._Train
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfWagons = int.Parse(Console.ReadLine());
+            int[] ppl = new int[numberOfWagons];
+            int sumOfAll = 0;
+
+            for(int i = 0; i < numberOfWagons; i++)
+            {
+                int current = int.Parse(Console.ReadLine());
+                ppl[i] = current;
+                sumOfAll += current;
+            }
+
+            for(int i = 0; i < numberOfWagons; i++)
+            {
+                Console.Write(ppl[i] +" ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(sumOfAll);
+        }
+    }
+}

@@ -1,0 +1,35 @@
+using System;
+using System.Linq;
+
+namespace _08.FactorialDivision
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstInt = int.Parse(Console.ReadLine());
+            int secondInt = int.Parse(Console.ReadLine());
+
+            DividedIntegers(firstInt, secondInt);
+        }
+
+        private static void DividedIntegers(int firstInt, int secondInt)
+        {
+            double firstFactoriel = firstInt;
+            double secondFactoriel = secondInt;
+
+            for(int i = firstInt - 1; i > 0; i--)
+            {
+                firstFactoriel *= i;
+            }
+            for(int i = secondInt - 1; i > 0; i--)
+            {
+                secondFactoriel *= i;
+            }
+
+            double result = firstFactoriel / secondFactoriel;
+
+            Console.WriteLine($"{result:F2}");
+        }
+    }
+}

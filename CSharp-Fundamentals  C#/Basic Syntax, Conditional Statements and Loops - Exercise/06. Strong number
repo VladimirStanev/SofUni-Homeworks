@@ -1,0 +1,48 @@
+using System;
+
+namespace _06._Strong_number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            int sum = 0;        
+
+            string strongNum = number.ToString();
+            if(strongNum.Length == 1)
+            {                            
+                int newNumberSum = 1;
+                int random = int.Parse(strongNum);
+                for (int j = 1; j <= random; j++)
+                {                   
+                    newNumberSum *= j;
+                }
+                sum += newNumberSum;
+            }
+            else
+            {
+                for (int i = 0; i <= strongNum.Length - 1; i++)
+                {
+                    int newNumberSum = 1;
+                    int random = int.Parse(strongNum[i].ToString());
+
+                    for (int j = 1; j <= random; j++)
+                    {                     
+                        newNumberSum *= j;                   
+                    }
+                    sum += newNumberSum;
+                }
+            }
+      
+            if (sum == number)
+            {
+                Console.WriteLine("yes");
+            }
+            else
+            {
+                Console.WriteLine("no");
+            }
+        }
+    }
+}

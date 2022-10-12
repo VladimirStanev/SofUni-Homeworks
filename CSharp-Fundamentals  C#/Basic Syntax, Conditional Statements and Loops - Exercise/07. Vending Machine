@@ -1,0 +1,124 @@
+using System;
+
+namespace _07._Vending_Machine
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string command = Console.ReadLine();
+            double totalMoney = 0;
+
+            while (command != "Start")
+            {
+                double insertedCoins = double.Parse(command);
+                if (insertedCoins == 0.1 || insertedCoins == 0.2 || insertedCoins == 0.5 || insertedCoins == 1 || insertedCoins == 2)
+                {
+                    totalMoney += insertedCoins;
+                }
+                else
+                {
+                    Console.WriteLine($"Cannot accept {command}");
+                }
+                command = Console.ReadLine();
+            }
+
+            string product = Console.ReadLine();
+            while (product != "End")
+            {              
+                if (product == "Nuts")
+                {
+                    if(totalMoney >= 2.0)
+                    {
+                        totalMoney -= 2.0;
+                        Console.WriteLine("Purchased nuts");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, not enough money");
+                        product = Console.ReadLine();
+                        continue;
+                    }
+                    
+                }
+                else if (product == "Water")
+                {
+                    
+                    if (totalMoney >= 0.7)
+                    {
+                        totalMoney -= 0.7; ;
+                        Console.WriteLine("Purchased water");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, not enough money");
+                        product = Console.ReadLine();
+                        continue;
+                    }
+                }
+                else if (product == "Crisps")
+                {
+                    
+                    if (totalMoney >= 1.5)
+                    {
+                        totalMoney -= 1.5;
+                        Console.WriteLine("Purchased crisps");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, not enough money");
+                        product = Console.ReadLine();
+                        continue;
+                    }
+                }
+                else if (product == "Soda")
+                {
+                    
+                    if (totalMoney >= 0.8)
+                    {
+                        totalMoney -= 0.8;
+                        Console.WriteLine("Purchased soda");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, not enough money");
+                        product = Console.ReadLine();
+                        continue;
+                    }
+                }
+                else if (product == "Coke")
+                {
+                    
+                    if (totalMoney >= 1.0)
+                    {
+                        totalMoney -= 1.0;
+                        Console.WriteLine("Purchased coke");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, not enough money");
+                        product = Console.ReadLine();
+                        continue;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid product");
+                    product = Console.ReadLine();
+                    continue;
+                }
+                product = Console.ReadLine();
+
+                if (product == "End")
+                {
+                    Console.WriteLine($"Change: {(totalMoney):f2}");
+                    return;
+                }
+            }
+            if(totalMoney >= 0)
+            {
+                Console.WriteLine($"Change: {(totalMoney):f2}");
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+using System.Linq;
+
+namespace _02._Common_Elements
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] array1 = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).ToArray(); 
+            string[] array2 = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).ToArray();
+
+            for(int i = 0; i < array1.Length; i++)
+            {
+                string currentWord = array1[i];
+                for (int j = 0; j < array2.Length; j++)
+                {                  
+                    if(currentWord == array2[j])
+                    {
+                        Console.Write(currentWord + " ");
+                    }                   
+                }
+            }
+        }
+    }
+}
