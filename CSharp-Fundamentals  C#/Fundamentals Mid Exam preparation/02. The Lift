@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Shopping_List
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfPplWaiting = int.Parse(Console.ReadLine());
+            List<int> wagons = Console.ReadLine()
+                               .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                               .Select(int.Parse)
+                               .ToList();
+
+            for (int i = 0; i < wagons.Count; i++)
+            {
+                if(numOfPplWaiting == 0)
+                {
+                    break;
+                }
+                int howMuchMoreCanTheWagonHold = 4 - wagons[i];
+                if(howMuchMoreCanTheWagonHold == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (numOfPplWaiting <= howMuchMoreCanTheWagonHold)
+                    {
+                        wagons[i] += numOfPplWaiting;
+                        numOfPplWaiting = 0;
+                    }
+                    else
+                    {
+                        wagons[i] += howMuchMoreCanTheWagonHold;
+                        numOfPplWaiting -= howMuchMoreCanTheWagonHold;
+                    }
+                }
+
+            }
+
+            if (numOfPplWaiting > 0)
+            {
+                Console.WriteLine($"There isn't enough space! {numOfPplWaiting} people in a queue!");
+                Console.WriteLine(String.Join(' ', wagons));
+            }
+            else if (numOfPplWaiting <= 0)
+            {
+                bool HasEmptySlots = false;
+                foreach (int x in wagons)
+                {
+                    if (x != 4)
+                    {
+                        HasEmptySlots = true;
+                    }
+                }
+                if (HasEmptySlots == true)
+                {
+                    Console.WriteLine("The lift has empty spots!");
+                    Console.WriteLine(String.Join(' ', wagons));
+                }
+                else
+                {
+                    Console.WriteLine(String.Join(' ', wagons));
+                }
+            }
+        }
+    }
+}

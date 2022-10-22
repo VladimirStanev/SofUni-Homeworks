@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Change_List
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine()
+                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(int.Parse)
+                                .ToList();
+            string command;
+            while((command = Console.ReadLine()) != "end")
+            {
+                string[] fullCommand = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string typeOfCommand = fullCommand[0];
+                if(typeOfCommand == "Delete")
+                {
+                    int numberToDelete = int.Parse(fullCommand[1]);
+                    numbers.RemoveAll(x => x == numberToDelete);
+                }
+                else if(typeOfCommand == "Insert")
+                {
+                    int numToInsert = int.Parse(fullCommand[1]);
+                    int positionToInsert = int.Parse(fullCommand[2]);
+                    numbers.Insert(positionToInsert, numToInsert);
+                }
+            }
+            //Console.WriteLine(String.Join(' ', numbers));
+            for(int i = 0; i < numbers.Count; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _04._List_Operations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine()
+                            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                            .Select(int.Parse)
+                            .ToList();
+            string command;
+            while((command =Console.ReadLine()) != "End")
+            {
+                string[] wholeCommand = command
+                                       .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string typeOfCommand = wholeCommand[0];
+
+                if(typeOfCommand == "Add")
+                {
+                    int numToAdd = int.Parse(wholeCommand[1]);
+                    numbers.Add(numToAdd);
+                }
+                else if(typeOfCommand == "Insert")
+                {
+                    int numToInsert = int.Parse(wholeCommand[1]);
+                    int index = int.Parse(wholeCommand[2]);
+
+                    if(IsInvalid(numbers, index))
+                    {
+                        Console.WriteLine("Invalid index");
+                        continue;
+                    }
+                    numbers.Insert(index, numToInsert);
+                }
+                else if(typeOfCommand == "Remove")
+                {
+                    int indexToRemove = int.Parse(wholeCommand[1]);
+
+                    if(IsInvalid(numbers, indexToRemove))
+                    {
+                        Console.WriteLine("Invalid index");
+                        continue;
+                    }
+                    numbers.RemoveAt(indexToRemove);
+                }
+                else if(typeOfCommand == "Shift")
+                {
+                    string direction = wholeCommand[1];
+                    int count = int.Parse(wholeCommand[2]);
+
+                    if (direction == "left")
+                    {
+                        ShiftListLeft(numbers, count);
+                    }
+                    else
+                    {
+                        ShiftListRight(numbers, count);
+                    }
+                }              
+            }
+            Console.WriteLine(String.Join(' ', numbers));
+        }
+        static bool IsInvalid(List<int> numbers, int index)
+            => index < 0 || index >= numbers.Count;
+
+        static void ShiftListLeft(List<int> numbers, int count)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                int firstNumber = numbers[0];
+                numbers.RemoveAt(0);
+                numbers.Add(firstNumber);
+            }
+            
+        }
+
+        static void ShiftListRight(List<int> numbers, int count)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                int lastNum = numbers[numbers.Count - 1];
+                numbers.RemoveAt(numbers.Count - 1);
+                numbers.Insert(0, lastNum);
+            }         
+        }
+
+        static List<int> MethodWithOneReturnButTwoTGubgs()
+        {
+            return new List<int>() { 1, 2, 3, 4, 5 };
+        }
+    }
+}

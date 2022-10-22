@@ -1,0 +1,47 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _03._House_Party
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> guests = new List<string>();
+            int numberOfCommands = int.Parse(Console.ReadLine());
+            for(int i = 0; i < numberOfCommands; i++)
+            {
+                string[] whoIsDoingWhat = Console.ReadLine()
+                                          .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string personsName = whoIsDoingWhat[0];
+                if (whoIsDoingWhat.Length == 3)
+                {
+                    if(guests.Contains(personsName))
+                    {
+                        Console.WriteLine($"{personsName} is already in the list!");
+                    }
+                    else
+                    {
+                        guests.Add(personsName);
+                    }         
+                }
+                else
+                {
+                    if (guests.Contains(personsName))
+                    {
+                        guests.Remove(personsName);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{personsName} is not in the list!");
+                    }
+                }
+            }
+            for(int i = 0; i < guests.Count; i++)
+            {
+                Console.WriteLine(guests[i]);
+            }
+        }
+    }
+}

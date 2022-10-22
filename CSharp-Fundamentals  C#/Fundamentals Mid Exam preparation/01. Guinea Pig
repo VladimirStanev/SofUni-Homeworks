@@ -1,0 +1,42 @@
+using System;
+
+namespace _01._Guinea_Pig
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal quantityOfFood = decimal.Parse(Console.ReadLine());
+            decimal quantityOfHay = decimal.Parse(Console.ReadLine());
+            decimal quantityOfCover = decimal.Parse(Console.ReadLine());
+            decimal pigsWeight = decimal.Parse(Console.ReadLine());
+
+            quantityOfFood *= 1000;
+            quantityOfHay *= 1000;
+            quantityOfCover *= 1000;
+            pigsWeight *= 1000;
+
+            for(int day = 1; day <= 30; day++)
+            {
+                quantityOfFood -= 300;
+                if(day % 2 == 0)
+                {
+                    quantityOfHay = quantityOfHay - 0.05m * quantityOfFood;
+                }
+                if(day % 3 == 0)
+                {
+                    quantityOfCover -= pigsWeight / 3;
+                }
+                if(quantityOfFood <= 0 || quantityOfHay <= 0 || quantityOfCover <= 0)
+                {
+                    Console.WriteLine("Merry must go to the pet store!");
+                    break;
+                }
+            }
+            if(quantityOfFood > 0 && quantityOfHay > 0 && quantityOfCover > 0)
+            {
+                Console.WriteLine($"Everything is fine! Puppy is happy! Food: {(quantityOfFood / 1000):f2}, Hay: {(quantityOfHay / 1000):f2}, Cover: {(quantityOfCover / 1000):f2}.");
+            }
+        }
+    }
+}

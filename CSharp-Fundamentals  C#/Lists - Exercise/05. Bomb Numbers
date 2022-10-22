@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _05._Bomb_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine()
+                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(int.Parse)
+                                .ToList();
+            int[] specialNumWithPower = Console.ReadLine()
+                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(int.Parse)
+                                .ToArray();
+            int specialNum = specialNumWithPower[0];
+            int powerOfNum = specialNumWithPower[1];
+            //int IndexPosition = numbers.IndexOf(specialNum);
+            for(int i = 0; i < numbers.Count; i++)
+            {
+                int numInPosition = numbers[i];
+                int position = i;
+                if (numInPosition == specialNum)
+                {                    
+                    for(int j = 0; j < powerOfNum; j++)
+                    {
+                        if (position == 0)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            numbers.RemoveAt(position - 1);
+                        }
+                        position --;
+                    }
+                    for (int j = 0; j < powerOfNum; j++)
+                    {                        
+                        if (position == numbers.Count - 1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            numbers.RemoveAt(position + 1);
+                        }
+                    }
+                }
+            }
+            int sumOfSpecialNums = 0;
+            foreach(int o in numbers)
+            {
+                if(o == specialNum)
+                {
+                    sumOfSpecialNums += specialNum; 
+                }
+            }    
+            int sum = numbers.Sum() - sumOfSpecialNums;
+            Console.WriteLine(sum);
+        }
+    }
+}

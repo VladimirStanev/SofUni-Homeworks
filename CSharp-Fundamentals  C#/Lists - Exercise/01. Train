@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _01._Train
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> passengersInWagons = Console.ReadLine()
+                                           .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                           .Select(int.Parse)
+                                           .ToList();
+            int maxCapacity = int.Parse(Console.ReadLine());
+            
+            string command = Console.ReadLine();
+            while(command != "end")
+            {
+                List<string> commands = command
+                     .Split()
+                     .ToList();
+                if (commands[0] == "Add")
+                {
+                    int numberToAdd = int.Parse(commands[1]);
+                    passengersInWagons.Add(numberToAdd);
+                }
+                else
+                {
+                    int pplToAdd = int.Parse(commands[0]);
+                    for(int i = 0; i < passengersInWagons.Count; i++)
+                    {
+                        if (passengersInWagons[i] + pplToAdd <= maxCapacity)
+                        {
+                            passengersInWagons[i] += pplToAdd;
+                            break;
+                        }
+                    }
+                }
+                command = Console.ReadLine();
+            }
+            Console.WriteLine(string.Join(" ", passengersInWagons));
+        }
+    }
+}
