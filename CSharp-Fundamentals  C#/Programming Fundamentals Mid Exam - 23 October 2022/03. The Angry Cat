@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _03._The_Angry_Cat
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] priceRatings = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                                       .Select(int.Parse).ToArray();
+            int entryPoint = int.Parse(Console.ReadLine());
+            string typeOfTargettedItem = Console.ReadLine();
+            int valueOfEntryPointItem = priceRatings[entryPoint];
+            int rightSum = 0;
+            int leftSum = 0;
+
+            for (int i = 0; i < entryPoint; i++)
+            {
+                if (typeOfTargettedItem == "cheap")
+                {
+                    if (priceRatings[i] < valueOfEntryPointItem)
+                    {
+                        leftSum += priceRatings[i];
+                    }
+                }
+                else
+                {
+                    if (priceRatings[i] >= valueOfEntryPointItem)
+                    {
+                        leftSum += priceRatings[i];
+                    }
+                }
+            }
+            for(int i = entryPoint + 1; i < priceRatings.Length; i++)
+            {
+                if (typeOfTargettedItem == "cheap")
+                {
+                    if (priceRatings[i] < valueOfEntryPointItem)
+                    {
+                        rightSum += priceRatings[i];
+                    }
+                }
+                else
+                {
+                    if (priceRatings[i] >= valueOfEntryPointItem)
+                    {
+                        rightSum += priceRatings[i];
+                    }
+                }
+            }
+            if(rightSum > leftSum)
+            {
+                Console.WriteLine($"Right - {rightSum}");
+            }
+            else
+            {
+                Console.WriteLine($"Left - {leftSum}");
+            }
+        }
+    }
+}

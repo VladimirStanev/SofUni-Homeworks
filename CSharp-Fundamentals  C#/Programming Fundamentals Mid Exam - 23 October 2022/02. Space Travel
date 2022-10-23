@@ -1,0 +1,69 @@
+using System;
+using System.Linq;
+
+namespace _02._Space_Travel
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] routeToTitan = Console.ReadLine().Split("||", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            int fuel = int.Parse(Console.ReadLine());
+            int ammunition = int.Parse(Console.ReadLine());
+            for(int i = 0; i < routeToTitan.Length; i++)
+            {
+                string isItTitan = routeToTitan[i];
+                if (isItTitan == "Titan")
+                {
+                    Console.WriteLine("You have reached Titan, all passengers are safe.");
+                    return;
+                }
+                    string[] typeOfOperation = routeToTitan[i].Split(' ').ToArray();
+               
+                string command = typeOfOperation[0];
+                int value = int.Parse(typeOfOperation[1]);
+                if(command == "Travel")
+                {
+                    if(fuel >= value)
+                    {
+                        fuel -= value;
+                        Console.WriteLine($"The spaceship travelled {value} light-years.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Mission failed.");
+                        return;
+                    }
+                }
+                else if(command == "Enemy")
+                {
+                    if(ammunition >= value)
+                    {
+                        ammunition -= value;
+                        Console.WriteLine($"An enemy with {value} armour is defeated.");
+                    }
+                    else if(ammunition < value)
+                    {
+                        if(value * 2 <= fuel)
+                        {
+                            fuel -= value * 2;
+                            Console.WriteLine($"An enemy with {value} armour is outmaneuvered.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Mission failed.");
+                            return;
+                        }
+                    }
+                }
+                else if(command == "Repair")
+                {
+                    fuel += value;
+                    ammunition += value * 2;
+                    Console.WriteLine($"Ammunitions added: {value * 2}.");
+                    Console.WriteLine($"Fuel added: {value}.");
+                }
+            }
+        }
+    }
+}

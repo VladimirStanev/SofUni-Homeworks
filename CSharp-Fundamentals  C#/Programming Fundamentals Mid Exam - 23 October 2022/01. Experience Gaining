@@ -1,0 +1,39 @@
+using System;
+
+namespace _01._Experience_Gaining
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal amountOfExperienceToUnlockTank = decimal.Parse(Console.ReadLine());
+            int countOfBattles = int.Parse(Console.ReadLine());
+            decimal totalExperience = 0;
+
+            for(int i = 1; i <= countOfBattles; i++)
+            {
+                decimal experiencedEarnedPerBattle = decimal.Parse(Console.ReadLine());
+                totalExperience += experiencedEarnedPerBattle;
+
+                if(i % 3 == 0)
+                {
+                    totalExperience += experiencedEarnedPerBattle * 0.15m;
+                }
+                else if(i % 5 == 0)
+                {
+                    totalExperience -= experiencedEarnedPerBattle * 0.10m;
+                }
+                else if(i % 15 == 0)
+                {
+                    totalExperience += experiencedEarnedPerBattle * 0.05m;
+                }
+                if (amountOfExperienceToUnlockTank <= totalExperience)
+                {
+                    Console.WriteLine($"Player successfully collected his needed experience for {i} battles.");
+                    return;
+                }
+            }
+            Console.WriteLine($"Player was not able to collect the needed experience, {(amountOfExperienceToUnlockTank - totalExperience):f2} more needed.");
+        }
+    }
+}
