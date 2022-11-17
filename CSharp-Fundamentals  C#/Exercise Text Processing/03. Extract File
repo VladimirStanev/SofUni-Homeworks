@@ -1,0 +1,20 @@
+using System;
+
+namespace _03._Extract_File
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] fileDictionary = Console.ReadLine().Split("\\", StringSplitOptions.RemoveEmptyEntries);
+            string[] fileNameAndExtension = fileDictionary[fileDictionary.Length - 1]
+                .Split(".", StringSplitOptions.RemoveEmptyEntries);
+
+            string fileName = fileNameAndExtension[0];
+            string extension = fileNameAndExtension[1];
+
+            Console.WriteLine($"File name: {fileName}");
+            Console.WriteLine($"File extension: {extension}");
+        }
+    }
+}

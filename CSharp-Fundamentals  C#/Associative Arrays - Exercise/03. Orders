@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+
+namespace _03._Orders
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, decimal> productsWithPrices = 
+                new Dictionary<string, decimal>();
+            Dictionary<string, int> productsWithQuantities = 
+                new Dictionary<string, int>();
+            Dictionary<string, decimal> productsWithFinalPrice = 
+                new Dictionary<string, decimal>();
+
+            string command;
+            while((command = Console.ReadLine()) != "buy")
+            {
+                string[] infoAboutProduct = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string nameOfProduct = infoAboutProduct[0];
+                decimal priceOfProduct = decimal.Parse(infoAboutProduct[1]);
+                int quantityOfProduct = int.Parse(infoAboutProduct[2]);
+
+                if(!productsWithPrices.ContainsKey(nameOfProduct))
+                {
+                    productsWithPrices[nameOfProduct] = priceOfProduct;
+                    productsWithQuantities[nameOfProduct] = quantityOfProduct;
+                    productsWithFinalPrice[nameOfProduct] = priceOfProduct * quantityOfProduct;
+                }
+                else
+                {
+                    productsWithFinalPrice[nameOfProduct] = 0;
+                    productsWithPrices[nameOfProduct] = priceOfProduct;
+                    productsWithQuantities[nameOfProduct] += quantityOfProduct;
+                    productsWithFinalPrice[nameOfProduct] = productsWithPrices[nameOfProduct] * productsWithQuantities[nameOfProduct];
+                }                              
+            }
+            foreach(var product in productsWithFinalPrice)
+            {
+                Console.WriteLine($"{product.Key} -> {(product.Value):f2}");
+            }
+        }
+    }
+}

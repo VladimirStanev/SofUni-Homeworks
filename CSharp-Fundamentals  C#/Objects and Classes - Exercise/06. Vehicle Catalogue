@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _06._Vehicle_Catalogue
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string command = Console.ReadLine();
+            List <Cars> cars = new List<Cars>();
+            List<Trucks> trucks = new List<Trucks>();
+            double averageCarsHorsePower = 0;
+            double averagetrucksHorsePower = 0;
+
+            while (command  != "End")
+            {
+                string[] informaton = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfVehicle = informaton[0].ToLower();
+                if (typeOfVehicle == "car")
+                {
+                    Cars car = new Cars(informaton[0].ToLower(), informaton[1], informaton[2], double.Parse(informaton[3]));
+                    //car.Type = "Car";
+                    //car.Name = informaton[1];
+                    //car.Color = informaton[2];
+                    //car.HorsePower = double.Parse(informaton[3]);
+
+                    cars.Add(car);
+                }
+                else
+                {
+                    Trucks truck = new Trucks(informaton[0].ToLower(), informaton[1], informaton[2], double.Parse(informaton[3]));
+                    //truck.Type = "Truck";
+                    //truck.Name = informaton[1];
+                    //truck.Color = informaton[2];
+                    //truck.HorsePower = double.Parse(informaton[3]);
+
+                    trucks.Add(truck);
+                }
+                command = Console.ReadLine();
+            }
+
+            string vechileInfo = Console.ReadLine();
+            while (vechileInfo != "Close the Catalogue")
+            {
+                foreach(Cars carInfo in cars)
+                {
+                    if(carInfo.Name == vechileInfo)
+                    {
+                        Console.WriteLine($"Type: Car");
+                        Console.WriteLine($"Model: {carInfo.Name}");
+                        Console.WriteLine($"Color: {carInfo.Color}");
+                        Console.WriteLine($"Horsepower: {carInfo.HorsePower}");
+                    }
+                }
+                foreach(Trucks truckInfo in trucks)
+                {
+                    if(truckInfo.Name == vechileInfo)
+                    {
+                        Console.WriteLine($"Type: Truck");
+                        Console.WriteLine($"Model: {truckInfo.Name}");
+                        Console.WriteLine($"Color: {truckInfo.Color}");
+                        Console.WriteLine($"Horsepower: {truckInfo.HorsePower}");
+                    }
+                }
+                vechileInfo = Console.ReadLine();
+            }
+            averageCarsHorsePower = cars.Average(car => car.HorsePower);
+            averagetrucksHorsePower = trucks.Average(truck => truck.HorsePower);
+
+            Console.WriteLine($"Cars have average horsepower of: {averageCarsHorsePower:f2}.");
+            Console.WriteLine($"Trucks have average horsepower of: {averagetrucksHorsePower:f2}.");
+        }
+    }
+    public class Cars
+    {
+        public Cars(string carType, string carName, string carColour, double carHorsePower)
+        {
+            this.Type = carType;
+            this.Name = carName;
+            this.Color = carColour;
+            this.HorsePower = carHorsePower;
+        }
+
+        public string Type { get; set; }
+
+        public string Name { get; set; }
+
+        public string Color { get; set; }
+
+        public double HorsePower { get; set; }
+    }
+    public class Trucks
+    {
+        public Trucks(string truckType, string truckName, string truckColour, double truckHorsePower)
+        {
+            this.Type = truckType;
+            this.Name = truckName;
+            this.Color = truckColour;
+            this.HorsePower = truckHorsePower;
+        }
+
+        public string Type { get; set; }
+
+        public string Name { get; set; }
+
+        public string Color { get; set; }
+
+        public double HorsePower { get; set; }
+    }
+}

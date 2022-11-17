@@ -1,0 +1,43 @@
+using System;
+
+namespace _02._Character_Multiplier
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] twoStrings = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string firstWord = twoStrings[0];
+            string secondWord = twoStrings[1];
+            int sum = GetStringValue(firstWord, secondWord);
+            Console.WriteLine(sum);
+        }
+
+        private static int GetStringValue (string firstWord, string secondWord)
+        {
+            int sum = 0;
+            int shorterText = Math.Min(firstWord.Length, secondWord.Length);
+            for (int i = 0; i < shorterText; i++)
+            {
+                sum += firstWord[i] * secondWord[i];
+            }
+
+            if(firstWord.Length > secondWord.Length)
+            {
+                for(int i = shorterText; i < firstWord.Length; i++)
+                {
+                    sum += firstWord[i];
+                }
+            }
+            else if(secondWord.Length > firstWord.Length)
+            {
+                for (int i = shorterText; i <secondWord.Length ; i++)
+                {
+                    sum += secondWord[i];
+                }
+            }
+
+            return(sum);
+        }
+    }
+}

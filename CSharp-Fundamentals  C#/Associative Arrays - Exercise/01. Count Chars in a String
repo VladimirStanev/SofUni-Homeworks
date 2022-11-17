@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+namespace _01._Count_Chars_in_a_String
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<char, int> countOfCharacters = 
+                new Dictionary<char, int>();
+
+            string givenWord = Console.ReadLine();
+            foreach(char letter in givenWord)
+            {
+                if(letter != ' ')
+                {
+                    if(!countOfCharacters.ContainsKey(letter))
+                    {
+                        countOfCharacters[letter] = 0;
+                    }
+
+                    countOfCharacters[letter]++;
+                }
+            }
+
+            foreach(var letters in countOfCharacters)
+            {
+                Console.WriteLine($"{letters.Key} -> {letters.Value}");
+            }
+        }
+    }
+}

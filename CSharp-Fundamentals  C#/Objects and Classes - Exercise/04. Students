@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _04._Students
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfStudents = int.Parse(Console.ReadLine());
+            List<Students> students = new List<Students>();
+            for (int i = 0; i < numOfStudents; i++)
+            {
+                string[] info = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                Students currStudent = new Students
+                (info[0],
+                info[1],
+                double.Parse(info[2]));
+                students.Add(currStudent);
+            }
+
+            List<Students> orderedByGradeStudents = students.OrderByDescending(x => x.Grade).ToList();
+
+            //for(int i = 0; i < orderedByGradeStudents.Count; i++)
+            //{
+                //Console.WriteLine(orderedByGradeStudents[i]);
+            //}
+            foreach(Students student in orderedByGradeStudents)
+            {
+                Console.WriteLine(student);
+            }
+        }
+    }
+
+    public class Students
+    {
+        public Students(string fstName, string scdName, double grade)
+        {
+            FirstName = fstName;
+            SecondName = scdName;
+            Grade = grade;
+        }
+
+        public string FirstName { get; set; }
+
+        public string SecondName { get; set; }
+
+        public double Grade { get; set; }
+
+        public override string ToString()
+        {
+            return ($"{FirstName} {SecondName}: {Grade:f2}").ToString();
+        }
+    }
+}

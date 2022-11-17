@@ -1,0 +1,24 @@
+using System;
+
+namespace _06._Replace_Repeating_Chars
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string randomString = Console.ReadLine();
+            char previousChar = randomString[0];
+
+            Console.Write(previousChar);
+            for (int i = 1; i < randomString.Length; i++)
+            {
+                char currentChar = randomString[i];
+                if(previousChar != currentChar)
+                {
+                    previousChar = currentChar;
+                    Console.Write(previousChar);
+                }
+            }
+        }
+    }
+}
