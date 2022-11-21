@@ -1,0 +1,36 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace _03._SoftUni_Bar_Income
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string pattern = @"^[^\%\.\|\$]*?\%(?<customerName>[A-Za-z]+)\%[^\%\.\|\$]*?\<(?<product>\w+)\>[^\%\.\|\$]*?\|(?<count>\d+)\|[^\%\.\|\$]*?(?<price>\d+(\.\d+)?)\$[^\%\.\|\$]*?$";
+            Regex regex = new Regex(pattern);
+
+            string command = Console.ReadLine();
+            double income = 0;
+
+            while(command != "end of shift")
+            {
+                Match match = regex.Match(command);
+                if(match.Success)
+                {
+                    string nameOfPerson = match.Groups["customerName"].Value;
+                    string productName = match.Groups["product"].Value;
+                    int count = int.Parse(match.Groups["count"].Value);
+                    double price = double.Parse(match.Groups["price"].Value);
+
+                    double priceForAll = count * price;
+                    income += priceForAll;
+
+                    Console.WriteLine($"{nameOfPerson}: {productName} - {priceForAll:f2}");
+                }
+                command = Console.ReadLine();
+            }
+            Console.WriteLine($"Total income: {income:f2}");
+        }
+    }
+}
