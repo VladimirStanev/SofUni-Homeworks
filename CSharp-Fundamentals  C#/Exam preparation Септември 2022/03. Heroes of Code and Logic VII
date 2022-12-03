@@ -1,0 +1,107 @@
+using System;
+using System.Collections.Generic;
+
+namespace _03._Heroes_of_Code_and_Logic_VII
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfHeroes = int.Parse(Console.ReadLine());
+            Dictionary<string, List<int>> heroStats = new Dictionary<string, List<int>>();
+
+            for (int i = 0; i < numberOfHeroes; i++)
+            {
+                string[] heroInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string heroName = heroInfo[0];
+                int hitPoints = int.Parse(heroInfo[1]);
+                int manapoints = int.Parse(heroInfo[2]);
+
+                heroStats[heroName] = new List<int>() { hitPoints, manapoints };
+            }
+            string command;
+            while((command = Console.ReadLine()) != "End")
+            {
+                string[] fullCommand = command.Split(" - ", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfAction = fullCommand[0];
+                if(typeOfAction == "CastSpell")
+                {
+                    string heroName = fullCommand[1];
+                    int mpNeeded = int.Parse(fullCommand[2]);
+                    string spellName = fullCommand[3];
+
+                    if(mpNeeded <= heroStats[heroName][1])
+                    {
+                        heroStats[heroName][1] = heroStats[heroName][1] - mpNeeded;
+                        Console.WriteLine($"{heroName} has successfully cast {spellName} and now has {heroStats[heroName][1]} MP!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{heroName} does not have enough MP to cast {spellName}!");
+                    }
+                }
+                else if(typeOfAction == "TakeDamage")
+                {
+                    string heroName = fullCommand[1];
+                    int damage = int.Parse(fullCommand[2]);
+                    string attacker = fullCommand[3];
+
+                    heroStats[heroName][0] -= damage;
+                    if(heroStats[heroName][0] > 0)
+                    {
+                        Console.WriteLine($"{heroName} was hit for {damage} HP by {attacker} and now has {heroStats[heroName][0]} HP left!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{heroName} has been killed by {attacker}!");
+                        heroStats.Remove(heroName);
+                    }
+                }
+                else if(typeOfAction == "Recharge")
+                {
+                    string heroName = fullCommand[1];
+                    int amount = int.Parse(fullCommand[2]);
+                    if(heroStats[heroName][1] + amount > 200)
+                    {
+                        Console.WriteLine($"{heroName} recharged for {200 - heroStats[heroName][1]} MP!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{heroName} recharged for {amount} MP!");
+                    }
+
+                    heroStats[heroName][1] += amount;
+                    if(heroStats[heroName][1] > 200)
+                    {
+                        heroStats[heroName][1] = 200;
+                    }                   
+                }
+                else if (typeOfAction == "Heal")
+                {
+                    string heroName = fullCommand[1];
+                    int amount = int.Parse(fullCommand[2]);
+                    if (heroStats[heroName][0] + amount > 100)
+                    {
+                        Console.WriteLine($"{heroName} healed for {100 - heroStats[heroName][0]} HP!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{heroName} healed for {amount} HP!");
+                    }
+
+                    heroStats[heroName][0] += amount;
+                    if (heroStats[heroName][0] > 100)
+                    {
+                        heroStats[heroName][0] = 100;
+                    }
+                }
+            }
+            foreach(var heroes in heroStats)
+            {
+                Console.WriteLine($"{heroes.Key}");
+                Console.WriteLine($"  HP: {heroes.Value[0]}");
+                Console.WriteLine($"  MP: {heroes.Value[1]}");
+            }
+        }
+    }
+}

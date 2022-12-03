@@ -1,0 +1,61 @@
+using System;
+using System.Text;
+
+namespace _01._Activation_Keys
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string rawActivationKey = Console.ReadLine();
+
+            string command;
+            while ((command = Console.ReadLine()) != "Generate")
+            {
+                string[] fullInfo = command.Split(">>>");
+                string typeOfAction = fullInfo[0];
+                if(typeOfAction == "Contains")
+                {
+                    string substring = fullInfo[1];
+
+                    if(!rawActivationKey.Contains(substring))
+                    {
+                        Console.WriteLine($"Substring not found!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{rawActivationKey} contains {substring}");
+                    }
+                }
+                else if (typeOfAction == "Flip")
+                {
+                    string chooseLowerOrUpper = fullInfo[1];
+                    int startIndex = int.Parse(fullInfo[2]);
+                    int endIndex = int.Parse(fullInfo[3]);
+
+                    string subStrng = rawActivationKey.Substring(startIndex, endIndex - startIndex);
+                    if(chooseLowerOrUpper == "Upper")
+                    {
+                        subStrng = subStrng.ToUpper();
+                    }
+                    else
+                    {
+                        subStrng = subStrng.ToLower();
+                    }
+                    rawActivationKey = rawActivationKey.Remove(startIndex, endIndex - startIndex);
+                    rawActivationKey = rawActivationKey.Insert(startIndex, subStrng);
+                    Console.WriteLine(rawActivationKey);
+                }
+                else if(typeOfAction == "Slice")
+                {
+                    int startingIndex = int.Parse(fullInfo[1]);
+                    int endIndex = int.Parse(fullInfo[2]);
+
+                    rawActivationKey = rawActivationKey.Remove(startingIndex, endIndex - startingIndex);
+                    Console.WriteLine(rawActivationKey);
+                }
+            }
+            Console.WriteLine($"Your activation key is: {rawActivationKey}");
+        }
+    }
+}

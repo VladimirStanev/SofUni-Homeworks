@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _03._The_Pianist
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfPieces = int.Parse(Console.ReadLine());
+            Dictionary<string, List<string>> parts = new Dictionary<string, List<string>>();
+
+            for (int i = 0; i < numOfPieces; i++)
+            {
+                string[] info = Console.ReadLine().Split("|", StringSplitOptions.RemoveEmptyEntries);
+
+                string piece = info[0];
+                string composer = info[1];
+                string key = info[2];
+
+                if (!parts.ContainsKey(piece))
+                {
+                    parts[piece] = new List<string>() {"", ""};
+                }
+
+                parts[piece][0] = (composer);
+                parts[piece][1] = (key);
+
+            }
+            string command;
+            while((command = Console.ReadLine()) != "Stop")
+            {
+                string[] fullinfo = command.Split("|", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                string typeOfCommand = fullinfo[0];             
+
+                if(typeOfCommand == "Add")
+                {
+                    string piece = fullinfo[1];
+                    string composer = fullinfo[2];
+                    string key = fullinfo[3];
+
+                    if (parts.ContainsKey(piece))
+                    {
+                        Console.WriteLine($"{piece} is already in the collection!");
+                    }
+                    else
+                    {
+                        parts[piece] = new List<string>() { "", "" };
+                        parts[piece][0] = composer;
+                        parts[piece][1] = key;
+
+                        Console.WriteLine($"{piece} by {composer} in {key} added to the collection!");
+                    }
+                }
+                else if(typeOfCommand == "Remove")
+                {
+                    string piece = fullinfo[1];
+
+                    if(parts.ContainsKey(piece))
+                    {
+                        parts.Remove(piece);
+                        Console.WriteLine($"Successfully removed {piece}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid operation! {piece} does not exist in the collection.");
+                    }
+                }
+                else if(typeOfCommand == "ChangeKey")
+                {
+                    string piece = fullinfo[1];
+                    string replacementKey = fullinfo[2];
+                    if(parts.ContainsKey(piece))
+                    {
+                        parts[piece][1] = replacementKey;
+                        Console.WriteLine($"Changed the key of {piece} to {replacementKey}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid operation! {piece} does not exist in the collection.");
+                    }
+                }
+            }
+            foreach (var (piece, value) in parts)
+            {
+                Console.WriteLine($"{piece} -> Composer: {value[0]}, Key: {value[1]}");
+            }
+        }
+    }
+}

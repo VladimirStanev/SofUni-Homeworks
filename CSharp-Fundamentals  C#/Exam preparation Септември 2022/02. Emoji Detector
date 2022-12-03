@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+using System.Text.RegularExpressions;
+
+namespace _02._Emoji_Detector
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> coolEmojis = new List<string>();
+            string input = Console.ReadLine();
+
+            Regex groupOfNums = new Regex(@"\d");
+
+            MatchCollection matchedNums = groupOfNums.Matches(input);
+
+            BigInteger coolThreshold = 1;
+            foreach (Match matchedNum in matchedNums)
+            {
+                coolThreshold = coolThreshold * int.Parse(matchedNum.Value);
+            }
+
+            string pattern = "::[A-Z][a-z]{2,}::|\\*\\*[A-Z][a-z]{2,}\\*\\*";
+            Regex validationOfEmojis = new Regex(pattern);
+
+            List<string> emojis = new List<string>();
+
+            MatchCollection match = validationOfEmojis.Matches(input);
+
+            if (match != null)
+            {
+                foreach (Match matchedEmoji in match)
+                {
+                    emojis.Add(matchedEmoji.Value.ToString());
+                }
+            }
+
+            foreach (string emoji in emojis)
+            {
+                BigInteger valueOfEmoji = 0;
+                for (int i = 2; i < emoji.Length - 1; i++)
+                {
+                    valueOfEmoji += (int)emoji[i];
+                }
+                if (valueOfEmoji >= coolThreshold)
+                {
+                    coolEmojis.Add(emoji);
+                }
+            }
+
+            Console.WriteLine($"Cool threshold: {coolThreshold}");
+            Console.WriteLine($"{emojis.Count} emojis found in the text. The cool ones are:");
+            foreach (string emoji in coolEmojis)
+            {
+                Console.WriteLine(emoji);
+            }
+        }
+    }
+}

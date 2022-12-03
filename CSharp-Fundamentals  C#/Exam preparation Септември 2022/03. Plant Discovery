@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+
+namespace _03._3_Plant_Discovery
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int plantNums = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> raritiesAndRatings = new Dictionary<string, List<double>>();
+
+            for (int i = 0; i < plantNums; i++)
+            {
+                string[] infoAboutPlant = Console.ReadLine().Split("<->", StringSplitOptions.RemoveEmptyEntries);
+                string plant = infoAboutPlant[0];
+                double rarity = double.Parse(infoAboutPlant[1]);
+                if(raritiesAndRatings.ContainsKey(plant))
+                {
+                    raritiesAndRatings[plant][0] = rarity;
+                }
+                else
+                {
+                    raritiesAndRatings.Add(plant, new List<double> { rarity, 0, 0 });
+                }
+            }
+
+            string command;
+            while((command = Console.ReadLine()) != "Exhibition")
+            {
+                string[] fullCommand = command.Split(": ", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfAction = fullCommand[0];
+                string[] plantWithRating = fullCommand[1].Split(" - ", StringSplitOptions.RemoveEmptyEntries);
+                string plantName = plantWithRating[0];
+
+                if(raritiesAndRatings.ContainsKey(plantName))
+                {
+                    if (typeOfAction == "Rate")
+                    {
+                        double rating = double.Parse(plantWithRating[1]);
+                        raritiesAndRatings[plantName][1] += rating;
+                        raritiesAndRatings[plantName][2]++;
+                    }
+                    else if (typeOfAction == "Update")
+                    {
+                        double newRarity = double.Parse(plantWithRating[1]);
+                        raritiesAndRatings[plantName][0] = newRarity;
+                    }
+                    else if (typeOfAction == "Reset")
+                    {
+                        raritiesAndRatings[plantName][1] = 0;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("error");
+                }              
+            }
+            
+            Console.WriteLine("Plants for the exhibition:");
+            foreach (var plant in raritiesAndRatings)
+            {
+                decimal averageRate = (decimal)(plant.Value[1] / plant.Value[2]);
+                Console.WriteLine($"- {plant.Key}; Rarity: {plant.Value[0]}; Rating: {averageRate:f2}");
+            }
+        }
+    }
+}

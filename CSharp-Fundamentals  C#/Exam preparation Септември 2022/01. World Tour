@@ -1,0 +1,60 @@
+using System;
+
+namespace _01._World_Tour
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string fullTour = Console.ReadLine();
+
+            string command;     
+            while((command = Console.ReadLine()) != "Travel")
+            {
+                string[] commandInfo = command.Split(":", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfAction = commandInfo[0];
+
+                if(typeOfAction == "Add Stop")
+                {
+                    int indexToInsert = int.Parse(commandInfo[1]);
+                    string whatToInsert = commandInfo[2];
+                    if(!(indexToInsert >= 0 && indexToInsert < fullTour.Length))
+                    {
+                        Console.WriteLine(fullTour);
+                        continue;
+                    }
+
+                    fullTour = fullTour.Insert(indexToInsert, whatToInsert);
+                    Console.WriteLine(fullTour);
+                }
+                else if(typeOfAction == "Remove Stop")
+                {
+                    int indexToStart = int.Parse(commandInfo[1]);
+                    int indexToEnd = int.Parse(commandInfo[2]);
+                    if(!(indexToStart >= 0 && indexToEnd < fullTour.Length))
+                    {
+                        Console.WriteLine(fullTour);
+                        continue;
+                    }
+
+                    fullTour = fullTour.Remove(indexToStart, (indexToEnd - indexToStart)+1);
+                    Console.WriteLine(fullTour);
+                }
+                else if (typeOfAction == "Switch")
+                {
+                    string whatToTake = commandInfo[1];
+                    string subString = commandInfo[2];
+                    if (!fullTour.Contains(whatToTake))
+                    {
+                        Console.WriteLine(fullTour);
+                        continue;
+                    }
+
+                    fullTour = fullTour.Replace(whatToTake, subString);
+                    Console.WriteLine(fullTour);
+                }
+            }
+            Console.WriteLine($"Ready for world tour! Planned stops: {fullTour}");
+        }
+    }
+}
