@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+
+namespace _03._Messages_Manager
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int capacity = int.Parse(Console.ReadLine());
+            Dictionary<string, List<int>> users = new Dictionary<string, List<int>>();
+            //Username --> sent[0] ; recieved[1] 
+
+            string command;
+            while ((command = Console.ReadLine()) != "Statistics")
+            {
+                string[] fullInfo = command.Split("=", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfAction = fullInfo[0];
+                if (typeOfAction == "Add")
+                {
+                    string username = fullInfo[1];
+                    if (users.ContainsKey(typeOfAction))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        int sentMessages = int.Parse(fullInfo[2]);
+                        int recievedMessages = int.Parse(fullInfo[3]);
+                        users.Add(username, new List<int>() { sentMessages, recievedMessages });
+                    }
+
+                }
+                else if (typeOfAction == "Message")
+                {
+                    string sender = fullInfo[1];
+                    string reciever = fullInfo[2];
+                    if (users.ContainsKey(sender) && users.ContainsKey(reciever))
+                    {
+                        users[sender][0] += 1;
+                        users[reciever][1] += 1;
+                        if (users[sender][0] + users[sender][1] >= capacity)
+                        {
+                            users.Remove(sender);
+                            Console.WriteLine($"{sender} reached the capacity!");
+                        }
+                        if (users[reciever][0] + users[reciever][1] >= capacity)
+                        {
+                            users.Remove(reciever);
+                            Console.WriteLine($"{reciever} reached the capacity!");
+                        }
+                    }
+                }
+                else if (typeOfAction == "Empty")
+                {
+                    string username = fullInfo[1];
+                    if(users.ContainsKey(username))
+                    {
+                        users.Remove(username);
+                    }
+                    else if(username == "All")
+                    {
+                        users.Clear();
+                    }
+                }
+            }
+            Console.WriteLine($"Users count: {users.Count}");
+            foreach(var user in users)
+            {
+                int allMessages = user.Value[0] + user.Value[1];
+                Console.WriteLine($"{user.Key} - {allMessages}");
+            }
+        }
+    }
+}

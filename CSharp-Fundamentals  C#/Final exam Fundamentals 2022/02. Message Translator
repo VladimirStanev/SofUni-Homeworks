@@ -1,0 +1,37 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace _02._Message_Translator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numOfPasswords = int.Parse(Console.ReadLine());
+            string pattern = "!([A-Z][a-z]{2,})!:\\[([A-Za-z]+)\\]";
+            Regex validPass = new Regex(pattern);
+
+            for (int i = 0; i < numOfPasswords; i++)
+            {
+                string password = Console.ReadLine();
+
+                Match match = validPass.Match(password);
+                if(!match.Success)
+                {
+                    Console.WriteLine("The message is invalid");
+                }
+                else
+                {
+                    string translation = match.Groups[2].Value;
+                    Console.Write($"{match.Groups[1].Value}:");
+                    for (int j = 0; j < translation.Length; j++)
+                    {
+                        int asciValue = (int)translation[j];
+                        Console.Write($" {asciValue}");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}

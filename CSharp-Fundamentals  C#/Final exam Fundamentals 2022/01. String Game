@@ -1,0 +1,70 @@
+using System;
+
+namespace _01._String_Game
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            string command;
+            while((command = Console.ReadLine()) != "Done")
+            {
+                string[] fullInfo = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string typeOfAction = fullInfo[0];
+                if(typeOfAction == "Change")
+                {
+                    string charToFind = fullInfo[1];
+                    string replacement = fullInfo[2];
+
+                    text = text.Replace(charToFind, replacement);
+                    Console.WriteLine(text);
+                }
+                else if(typeOfAction == "Includes")
+                {
+                    string substring = fullInfo[1];
+                    if(text.Contains(substring))
+                    {
+                        Console.WriteLine("True");
+                    }
+                    else
+                    {
+                        Console.WriteLine("False");
+                    }
+                }
+                else if (typeOfAction == "End")
+                {
+                    string substring = fullInfo[1];
+                    if(text.EndsWith(substring))
+                    {
+                        Console.WriteLine("True");
+                    }
+                    else
+                    {
+                        Console.WriteLine("False");
+                    }
+                }
+                else if (typeOfAction == "Uppercase")
+                {
+                    text = text.ToUpper();
+                    Console.WriteLine(text);
+                }
+                else if (typeOfAction == "FindIndex")
+                {
+                    string charToFind = fullInfo[1];
+                    int charIndex = text.IndexOf(charToFind);
+                    Console.WriteLine(charIndex);
+                }
+                else if (typeOfAction == "Cut")
+                {
+                    int startingIndex = int.Parse(fullInfo[1]);
+                    int howMuchToCut = int.Parse(fullInfo[2]);
+                    string whatIsRemoved = string.Empty;
+                    whatIsRemoved = text.Substring(startingIndex, howMuchToCut);
+                    text = text.Remove(startingIndex, howMuchToCut);
+                    Console.WriteLine(whatIsRemoved);
+                }
+            }
+        }
+    }
+}
