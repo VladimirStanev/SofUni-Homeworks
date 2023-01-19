@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _05._Fashion_Boutique
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> clothesWithValues = new(
+                Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)              
+                );
+
+            int rackCapacity = int.Parse(Console.ReadLine());
+            int currentRackCapacity = rackCapacity;
+
+            int numberOfRacks = 1;
+
+            while(clothesWithValues.Any())
+            {
+                    currentRackCapacity -= clothesWithValues.Peek();
+                    if (currentRackCapacity < 0)
+                    {
+                        currentRackCapacity = rackCapacity;
+                        numberOfRacks++;
+
+                        continue;
+                    }
+
+                    clothesWithValues.Pop();              
+            }
+            Console.WriteLine(numberOfRacks);
+        }
+    }
+}

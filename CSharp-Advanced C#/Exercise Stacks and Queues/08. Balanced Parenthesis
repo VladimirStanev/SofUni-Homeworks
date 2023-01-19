@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+
+namespace _08._Balanced_Parenthesis
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            Stack<char> stack = new ();
+            
+            foreach(char element in input)
+            {
+                if(element == '(' || element == '[' || element == '{')
+                {
+                    stack.Push (element);
+                }
+                else if(element == ')')
+                {
+                    if(stack.Count == 0 || stack.Pop() != '(')
+                    {
+                        Console.WriteLine("NO");
+                        return;
+                    }
+                }
+                else if (element == ']')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '[')
+                    {
+                        Console.WriteLine("NO");
+                        return;
+                    }
+                }
+                else if (element == '}')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '{')
+                    {
+                        Console.WriteLine("NO");
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine("YES");
+        }
+    }
+}

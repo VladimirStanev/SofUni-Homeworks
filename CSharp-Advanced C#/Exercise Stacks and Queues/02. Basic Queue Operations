@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Basic_Queue_Operations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<int> queue = new Queue<int>();
+
+            int[] nSX = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+            int[] numbersToPush = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            int howManyToEnqueue = nSX[0];
+            int howManyToDequeue = nSX[1];
+            int whatToPeekInTheQueue = nSX[2];
+
+            for (int i = 0; i < howManyToEnqueue; i++)
+            {
+                int currentNumToPush = numbersToPush[i];
+                queue.Enqueue(currentNumToPush);
+            }
+            for (int j = 0; j < howManyToDequeue; j++)
+            {
+                queue.Dequeue();
+            }
+
+            if (queue.Contains(whatToPeekInTheQueue))
+            {
+                Console.WriteLine("true");
+            }
+            else
+            {
+                if (queue.Count > 0)
+                {
+                    Console.WriteLine(queue.Min());
+                }
+                else
+                {
+                    Console.WriteLine(0);
+                }
+            }
+        }
+    }
+}

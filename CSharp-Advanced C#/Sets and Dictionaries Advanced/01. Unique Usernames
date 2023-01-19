@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace Sets_and_Dictionaries_Advanced
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //List<string> uniqueOnes = new List<string>();
+
+            //for(int i = 0; i < numberOfUsernames; i++)
+            //{
+            //    string username = Console.ReadLine();
+            //    if(uniqueOnes.Contains(username))
+            //    {
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        uniqueOnes.Add(username);
+            //    }
+            //}
+            //foreach(string username in uniqueOnes)
+            //{
+            //    Console.WriteLine(username);
+            //}
+            int numberOfUsernames = int.Parse(Console.ReadLine());
+            HashSet<string> uniqueUsernames = new HashSet<string>();
+
+            for(int i = 0; i < numberOfUsernames; i++)
+            {
+                string username = Console.ReadLine();
+                uniqueUsernames.Add(username);
+            }
+
+            foreach(string username in uniqueUsernames)
+            {
+                Console.WriteLine(username);
+            }
+        }
+    }
+}
