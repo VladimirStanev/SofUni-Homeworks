@@ -1,0 +1,183 @@
+using System;
+
+namespace _02._Wall_Destroyer
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = int.Parse(Console.ReadLine());
+
+            char[,] matrix = new char[size,size];
+            int currentRow = 0;
+            int currentCol = 0;
+
+            for(int row = 0; row < size; row++)
+            {
+                string input = Console.ReadLine();
+                for(int col = 0; col < size; col++)
+                {
+                    matrix[row,col] = input[col];
+                    if (matrix[row, col] == 'V')
+                    {
+                        matrix[row, col] = '*';
+                        currentRow = row;
+                        currentCol = col;
+                    }
+                }
+            }
+
+            bool hitByElectricity = false;
+            int holesMade = 1;
+            int rodsHit = 0;
+
+            string command;
+            while((command = Console.ReadLine()) != "End")
+            {
+                if(command == "up")
+                {
+                    currentRow--;
+                    if (currentRow < 0)
+                    {
+                        currentRow++;
+                        continue;
+                    }
+                    if(matrix[currentRow, currentCol] == 'R')
+                    {
+                        rodsHit++;
+                        currentRow++;
+                        Console.WriteLine("Vanko hit a rod!");
+                    }
+                    else if(matrix[currentRow, currentCol] == 'C')
+                    {
+                        hitByElectricity = true;
+                        holesMade++;
+                        matrix[currentRow, currentCol] = 'E';
+                        break;
+                    }
+                    else if (matrix[currentRow, currentCol] == '*')
+                    {
+                        Console.WriteLine($"The wall is already destroyed at position [{currentRow}, {currentCol}]!");
+                    }
+                    else
+                    {
+                        holesMade++;
+                        matrix[currentRow, currentCol] = '*';
+                    }
+                }
+                else if(command == "down")
+                {
+                    currentRow++;
+                    if (currentRow >= size)
+                    {
+                        currentRow--;
+                        continue;
+                    }
+                    if (matrix[currentRow, currentCol] == 'R')
+                    {
+                        rodsHit++;
+                        currentRow--;
+                        Console.WriteLine("Vanko hit a rod!");
+                    }
+                    else if (matrix[currentRow, currentCol] == 'C')
+                    {
+                        hitByElectricity = true;
+                        holesMade++;
+                        matrix[currentRow, currentCol] = 'E';
+                        break;
+                    }
+                    else if (matrix[currentRow, currentCol] == '*')
+                    {
+                        Console.WriteLine($"The wall is already destroyed at position [{currentRow}, {currentCol}]!");
+                    }
+                    else
+                    {
+                        holesMade++;
+                        matrix[currentRow, currentCol] = '*';
+                    }
+                }
+                else if (command == "left")
+                {
+                    currentCol--;
+                    if(currentCol < 0)
+                    {
+                        currentCol++;
+                        continue;
+                    }
+                    if (matrix[currentRow, currentCol] == 'R')
+                    {
+                        rodsHit++;
+                        currentCol++;
+                        Console.WriteLine("Vanko hit a rod!");
+                    }
+                    else if (matrix[currentRow, currentCol] == 'C')
+                    {
+                        hitByElectricity = true;
+                        holesMade++;
+                        matrix[currentRow, currentCol] = 'E';
+                        break;
+                    }
+                    else if (matrix[currentRow, currentCol] == '*')
+                    {
+                        Console.WriteLine($"The wall is already destroyed at position [{currentRow}, {currentCol}]!");
+                    }
+                    else
+                    {
+                        holesMade++;
+                        matrix[currentRow, currentCol] = '*';
+                    }
+                }
+                else if (command == "right")
+                {
+                    currentCol++;
+                    if(currentCol >= size)
+                    {
+                        currentCol--;
+                        continue;
+                    }
+                    if (matrix[currentRow, currentCol] == 'R')
+                    {
+                        rodsHit++;
+                        currentCol--;
+                        Console.WriteLine("Vanko hit a rod!");
+                    }
+                    else if (matrix[currentRow, currentCol] == 'C')
+                    {
+                        hitByElectricity = true;
+                        holesMade++;
+                        matrix[currentRow, currentCol] = 'E';
+                        break;
+                    }
+                    else if (matrix[currentRow, currentCol] == '*')
+                    {
+                        Console.WriteLine($"The wall is already destroyed at position [{currentRow}, {currentCol}]!");
+                    }
+                    else
+                    {
+                        holesMade++;
+                        matrix[currentRow, currentCol] = '*';
+                    }
+                }
+            }
+
+            if (hitByElectricity == true)
+            {
+                Console.WriteLine($"Vanko got electrocuted, but he managed to make {holesMade} hole(s).");
+            }
+            else
+            {
+                matrix[currentRow, currentCol] = 'V';
+                Console.WriteLine($"Vanko managed to make {holesMade} hole(s) and he hit only {rodsHit} rod(s).");
+            }
+
+            for(int row = 0; row < size; row++)
+            {
+                for(int col = 0; col < size; col++)
+                {
+                    Console.Write(matrix[row, col]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}

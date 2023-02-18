@@ -1,0 +1,166 @@
+int size = int.Parse(Console.ReadLine());
+string racingNumber = Console.ReadLine();
+
+string[,] raceRoute = new string[size, size];
+
+for (int row = 0; row < size; row++)
+{
+    string[] partsOfTheRoute = Console.ReadLine()
+        .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+    for (int col = 0; col < size; col++)
+    {
+        raceRoute[row, col] = partsOfTheRoute[col];
+    }
+}
+
+int carRow = 0;
+int carCol = 0;
+bool IsFinished = false;
+
+int kmCovered = 0;
+
+string command;
+while ((command = Console.ReadLine()) != "End")
+{
+    if (command == "left")
+    {
+        kmCovered += 10;
+        carCol--;
+
+        if(raceRoute[carRow, carCol] == "T")
+        {
+            raceRoute[carRow, carCol] = ".";
+            for (int i = 0; i < size; i++)
+            {
+                for(int j = 0; j < size; j++)
+                {
+                    if (raceRoute[i, j] == "T")
+                    {
+                        raceRoute[i, j] = ".";
+                        carRow = i;
+                        carCol = j;
+                        break;
+                    }
+                }
+            }
+            kmCovered += 20;
+        }
+        else if (raceRoute[carRow, carCol] == "F")
+        {
+            IsFinished = true;
+            raceRoute[carRow, carCol] = "C";
+            break;
+        }
+    }
+    else if (command == "right")
+    {
+        kmCovered += 10;
+        carCol++;
+
+        if (raceRoute[carRow, carCol] == "T")
+        {
+            raceRoute[carRow, carCol] = ".";
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (raceRoute[i, j] == "T")
+                    {
+                        raceRoute[i, j] = ".";
+                        carRow = i;
+                        carCol = j;
+                        break;
+                    }
+                }
+            }
+            kmCovered += 20;
+        }
+        else if (raceRoute[carRow, carCol] == "F")
+        {
+            IsFinished = true;
+            raceRoute[carRow, carCol] = "C";
+            break;
+        }
+    }
+    else if (command == "down")
+    {
+        kmCovered += 10;
+        carRow++;
+
+        if (raceRoute[carRow, carCol] == "T")
+        {
+            raceRoute[carRow, carCol] = ".";
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (raceRoute[i, j] == "T")
+                    {
+                        raceRoute[i, j] = ".";
+                        carRow = i;
+                        carCol = j;
+                        break;
+                    }
+                }
+            }
+            kmCovered += 20;
+        }
+        else if (raceRoute[carRow, carCol] == "F")
+        {
+            IsFinished = true;
+            raceRoute[carRow, carCol] = "C";
+            break;
+        }
+    }
+    else if (command == "up")
+    {
+        kmCovered += 10;
+        carRow--;
+
+        if (raceRoute[carRow, carCol] == "T")
+        {
+            raceRoute[carRow, carCol] = ".";
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (raceRoute[i, j] == "T")
+                    {
+                        raceRoute[i, j] = ".";
+                        carRow = i;
+                        carCol = j;
+                        break;
+                    }
+                }
+            }
+            kmCovered += 20;
+        }
+        else if (raceRoute[carRow, carCol] == "F")
+        {
+            IsFinished = true;
+            raceRoute[carRow, carCol] = "C";
+            break;
+        }
+    }
+}
+
+if(IsFinished == false)
+{
+    raceRoute[carRow, carCol] = "C";
+    Console.WriteLine($"Racing car {racingNumber} DNF.");
+    Console.WriteLine($"Distance covered {kmCovered} km.");
+}
+else
+{
+    Console.WriteLine($"Racing car {racingNumber} finished the stage!");
+    Console.WriteLine($"Distance covered {kmCovered} km.");
+}
+
+for(int rows = 0; rows < size; rows++)
+{
+    for(int cols = 0; cols < size; cols++)
+    {
+        Console.Write(raceRoute[rows, cols]);
+    }
+    Console.WriteLine();
+}

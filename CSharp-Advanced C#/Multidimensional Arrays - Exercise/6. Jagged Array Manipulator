@@ -1,0 +1,90 @@
+using System;
+using System.Linq;
+
+namespace _6._Jagged_Array_Manipulator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfRows = int.Parse(Console.ReadLine());
+
+            int[][] jaggedArray = new int[numberOfRows][];
+            for(int row = 0; row < numberOfRows; row++)
+            {
+                int[] cols = Console.ReadLine()
+                    .Split(" ",StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToArray();
+
+                jaggedArray[row] = cols;
+            }
+
+            for(int row = 0; row < numberOfRows - 1; row++)
+            {
+                if (jaggedArray[row].Length == jaggedArray[row + 1].Length)
+                {
+                    for(int col = 0; col < jaggedArray[row].Length; col++)
+                    {
+                        jaggedArray[row][col] *= 2;
+                        jaggedArray[row + 1][col] *= 2;
+                    }
+                }
+                else
+                {
+                    for(int col = 0; col < jaggedArray[row].Length; col++)
+                    {
+                        jaggedArray[row][col] /= 2;
+                    }
+
+                    for (int col = 0; col < jaggedArray[row + 1].Length; col++)
+                    {
+                        jaggedArray[row + 1][col] /= 2;
+                    }
+                }    
+            }
+
+            while(true)
+            {
+                string command = Console.ReadLine();
+
+                if(command == "End")
+                {
+                    break;
+                }
+
+                string[] input = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+                int row = int.Parse(input[1]);
+                int col = int.Parse(input[2]);
+                int value = int.Parse(input[3]);
+
+                if (input[0] == "Add")
+                {
+                    if(row >= 0 && row < jaggedArray.Length && col < jaggedArray[row].Length && col >= 0)
+                    {
+                        jaggedArray[row][col] += value;
+                    }
+                }
+                else
+                {
+                    if (row >= 0 && row < jaggedArray.Length && col < jaggedArray[row].Length && col >= 0)
+                    {
+                        jaggedArray[row][col] -= value;
+                    }
+                }
+
+            }
+
+            for(int row = 0; row < numberOfRows; row++)
+            {
+                for (int col = 0; col < jaggedArray[row].Length; col++)
+                {
+                    Console.Write($"{jaggedArray[row][col]} ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}

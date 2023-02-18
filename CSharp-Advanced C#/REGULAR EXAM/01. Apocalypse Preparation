@@ -1,0 +1,91 @@
+
+int[] textileNumbers = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse).ToArray();
+
+int[] medicamentNumbers = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse).ToArray();
+
+Queue<int> textile = new();
+Stack<int> medicament = new();
+
+foreach(int textileValue in textileNumbers)
+{
+    textile.Enqueue(textileValue);
+}
+foreach(int medicamentValue in medicamentNumbers)
+{
+    medicament.Push(medicamentValue);
+}
+
+Dictionary<string, int> healingItems = new Dictionary<string, int>();
+healingItems.Add("Patch", 0);
+healingItems.Add("Bandage", 0);
+healingItems.Add("MedKit", 0);
+
+while(textile.Count > 0 && medicament.Count > 0)
+{
+    int currSum = textile.Peek() + medicament.Peek();
+    if(currSum == 30)
+    {
+        textile.Dequeue();
+        medicament.Pop();
+        healingItems["Patch"]++;
+    }
+    else if(currSum == 40)
+    {
+        textile.Dequeue();
+        medicament.Pop();
+        healingItems["Bandage"]++;
+    }
+    else if(currSum == 100)
+    {
+        textile.Dequeue();
+        medicament.Pop();
+        healingItems["MedKit"]++;
+    }
+    else if(currSum > 100)
+    {
+        healingItems["MedKit"]++;
+        textile.Dequeue();
+        medicament.Pop();
+        int leftRecources = currSum - 100;
+        medicament.Push(medicament.Pop() + leftRecources);
+    }
+    else
+    {
+        textile.Dequeue();
+        medicament.Push(medicament.Pop() + 10);
+    }
+}
+
+if (textile.Count == 0 && medicament.Count == 0)
+{
+    Console.WriteLine("Textiles and medicaments are both empty.");
+}
+else if (textile.Any())
+{
+    Console.WriteLine("Medicaments are empty.");
+}
+else
+{
+    Console.WriteLine("Textiles are empty.");
+}
+
+var sortedMedicaments = healingItems.OrderByDescending(x => x.Value).ThenBy(x => x.Key);
+
+foreach (var item in sortedMedicaments)
+{
+    if(item.Value > 0)
+    {
+        Console.WriteLine($"{item.Key} - {item.Value}");
+    }
+}
+
+if(medicament.Any())
+{
+    Console.WriteLine($"Medicaments left: {string.Join(", ", medicament)}");
+}
+if (textile.Any())
+{
+    Console.WriteLine($"Textiles left: {string.Join(", ", textile)}");
+}

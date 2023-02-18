@@ -1,0 +1,143 @@
+int[] rowsNcols = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+
+int rows = rowsNcols[0];
+int cols = rowsNcols[1];
+
+char[,] playground = new char[rows, cols];
+
+int rowPosition = 0;
+int colPosition = 0;
+
+for (int i = 0; i < rows; i++)
+{
+    string[] rowInput = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+    for(int j = 0; j < cols; j++)
+    {
+        playground[i, j] = char.Parse(rowInput[j]);
+        if(playground[i, j] == 'B')
+        {
+            playground[i, j] = '-';
+            rowPosition = i;
+            colPosition = j;
+        }
+    }
+}
+
+int touchedPlayersCount = 0;
+int movesMadeCount = 0;
+
+string command;
+while((command = Console.ReadLine()) != "Finish" && touchedPlayersCount < 3)
+{
+    if(command == "up")
+    {
+        rowPosition--;
+        if(rowPosition < 0)
+        {
+            rowPosition++;
+            continue;
+        }
+        else
+        {
+            if (playground[rowPosition, colPosition] == 'O')
+            {
+                rowPosition++;
+                continue;
+            }
+            else if(playground[rowPosition, colPosition] == 'P')
+            {
+                movesMadeCount++;
+                playground[rowPosition, colPosition] = '-';
+                touchedPlayersCount++;
+            }
+            else if(playground[rowPosition, colPosition] == '-')
+            {
+                movesMadeCount++;
+            }
+        }
+    }
+    else if(command == "down")
+    {
+        rowPosition++;
+        if(rowPosition >= rows)
+        {
+            rowPosition--;
+            continue;
+        }
+        else
+        {
+            if (playground[rowPosition, colPosition] == 'O')
+            {
+                rowPosition--;
+                continue;
+            }
+            else if (playground[rowPosition, colPosition] == 'P')
+            {
+                movesMadeCount++;
+                playground[rowPosition, colPosition] = '-';
+                touchedPlayersCount++;
+            }
+            else if (playground[rowPosition, colPosition] == '-')
+            {
+                movesMadeCount++;
+            }
+        }
+    }
+    else if (command == "left")
+    {
+        colPosition--;
+        if(colPosition < 0)
+        {
+            colPosition++;
+            continue;
+        }
+        else
+        {
+            if (playground[rowPosition, colPosition] == 'O')
+            {
+                colPosition++;
+                continue;
+            }
+            else if (playground[rowPosition, colPosition] == 'P')
+            {
+                movesMadeCount++;
+                playground[rowPosition, colPosition] = '-';
+                touchedPlayersCount++;
+            }
+            else if (playground[rowPosition, colPosition] == '-')
+            {
+                movesMadeCount++;
+            }
+        }
+    }
+    else if (command == "right")
+    {
+        colPosition++;
+        if (colPosition >= cols)
+        {
+            colPosition--;
+            continue;
+        }
+        else
+        {
+            if (playground[rowPosition, colPosition] == 'O')
+            {
+                colPosition--;
+                continue;
+            }
+            else if (playground[rowPosition, colPosition] == 'P')
+            {
+                movesMadeCount++;
+                playground[rowPosition, colPosition] = '-';
+                touchedPlayersCount++;
+            }
+            else if (playground[rowPosition, colPosition] == '-')
+            {
+                movesMadeCount++;
+            }
+        }
+    }
+}
+
+Console.WriteLine("Game over!");
+Console.WriteLine($"Touched opponents: {touchedPlayersCount} Moves made: {movesMadeCount}");

@@ -1,0 +1,62 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace EvenLines;
+public class EvenLines
+{
+    static void Main()
+    {
+        string inputFilePath = @"..\..\..\text.txt";
+
+        Console.WriteLine(ProcessLines(inputFilePath));
+    }
+
+    public static string ProcessLines(string inputFilePath)
+    {
+        StringBuilder sb = new();
+
+        using StreamReader streamReader = new(inputFilePath);
+
+        string line = string.Empty;
+
+        int count = 0;
+
+        while (line != null)
+        {
+            line = streamReader.ReadLine();
+
+            if(count % 2 == 0)
+            {
+                string replaced = ReplaceSymbols(line);
+                string reversed = ReverseSymbols(replaced);
+                sb.AppendLine(reversed);
+            }
+            count++;
+        }
+
+        return sb.ToString();
+    }
+
+    private static string ReplaceSymbols(string line)
+    {
+        StringBuilder sb = new(line);
+
+        string[] symbolsToReplace = { "-", ",", ".", "!", "?" };
+
+        foreach(var symbol in symbolsToReplace)
+        {
+            sb = sb.Replace(symbol, "@");
+        }
+        return sb.ToString();
+    }
+
+    private static string ReverseSymbols(string replaced)
+    {
+        string[] reversedWords = replaced.Split(" ").Reverse().ToArray();
+
+        return string.Join(" ", reversedWords);
+    }
+
+}

@@ -1,0 +1,65 @@
+
+
+int[] milligramsOfCaffeine = Console.ReadLine()
+    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse)
+    .ToArray();
+
+int[] numbersWithEnergyDrinks = Console.ReadLine()
+    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse)
+    .ToArray();
+
+Stack<int> caffeine = new Stack<int>();
+
+for(int i = 0; i < milligramsOfCaffeine.Length; i++)
+{
+    caffeine.Push(milligramsOfCaffeine[i]);
+}
+
+
+Queue<int> energyDrinks = new Queue<int>();
+
+for(int j = 0; j < numbersWithEnergyDrinks.Length; j++)
+{
+    energyDrinks.Enqueue(numbersWithEnergyDrinks[j]);
+}
+
+int currentCaffeineLevel = 0;
+
+while(energyDrinks.Any() && caffeine.Any() && currentCaffeineLevel < 300)
+{
+    int currentDrink = caffeine.Peek() * energyDrinks.Peek();
+
+    currentCaffeineLevel += currentDrink;
+    if(currentCaffeineLevel <= 300)
+    {
+        caffeine.Pop();
+        energyDrinks.Dequeue();
+    }
+    else
+    {
+        currentCaffeineLevel -= currentDrink;
+        if(currentCaffeineLevel <= 30)
+        {
+            currentCaffeineLevel = 0;
+        }
+        else
+        {
+            currentCaffeineLevel -= 30;
+        }
+        caffeine.Pop();
+        energyDrinks.Enqueue(energyDrinks.Dequeue());
+    }
+}
+
+if(energyDrinks.Any())
+{
+    Console.WriteLine($"Drinks left: {String.Join(", ", energyDrinks)}");
+}
+else
+{
+    Console.WriteLine("At least Stamat wasn't exceeding the maximum caffeine.");
+}
+
+Console.WriteLine($"Stamat is going to sleep with {currentCaffeineLevel} mg caffeine.");

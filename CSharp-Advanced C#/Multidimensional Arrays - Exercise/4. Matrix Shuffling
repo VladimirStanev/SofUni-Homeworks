@@ -1,0 +1,70 @@
+using System;
+using System.Linq;
+
+namespace _4._Matrix_Shuffling
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] size = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+            int rows = size[0];
+            int cols = size[1];
+
+            string[,] matrix = new string[rows, cols];
+
+            for(int row = 0; row < rows; row++)
+            {
+                string[] matrixInput = Console.ReadLine()
+                   .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                for (int col = 0; col < cols; col++)
+                {
+                    matrix[row, col] = matrixInput[col];
+                }
+            }
+            string command;
+            while((command = Console.ReadLine()) != "END")
+            {
+                string[] commandInfo = command
+                    .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                if (commandInfo[0] != "swap" || 
+                    commandInfo.Length > 5 || 
+                    commandInfo.Length < 5 ||
+                    int.Parse(commandInfo[1]) >= rows ||
+                    int.Parse(commandInfo[2]) >= cols ||
+                    int.Parse(commandInfo[1]) < 0 ||
+                    int.Parse(commandInfo[2]) < 0 ||
+                    int.Parse(commandInfo[3]) >= rows ||
+                    int.Parse(commandInfo[4]) >= cols ||
+                    int.Parse(commandInfo[3]) < 0 ||
+                    int.Parse(commandInfo[4]) < 0)
+                {
+                    Console.WriteLine("Invalid input!");
+                    continue;
+                }
+                else
+                {
+                    int toSwitchRow = int.Parse(commandInfo[1]);
+                    int toSwitchCol = int.Parse(commandInfo[2]);
+                    int switchingRow = int.Parse(commandInfo[3]);
+                    int switchingCol = int.Parse(commandInfo[4]);
+                    string keepingChar = matrix[toSwitchRow, toSwitchCol];
+
+                    matrix[toSwitchRow, toSwitchCol] = matrix[switchingRow, switchingCol];
+                    matrix[switchingRow, switchingCol] = keepingChar;
+                    for(int i = 0; i < rows; i++)
+                    {
+                        for(int j = 0; j < cols; j++)
+                        {
+                            Console.Write(matrix[i,j] + " ");
+                        }
+                        Console.WriteLine();
+                    }
+                }    
+            }
+        }
+    }
+}

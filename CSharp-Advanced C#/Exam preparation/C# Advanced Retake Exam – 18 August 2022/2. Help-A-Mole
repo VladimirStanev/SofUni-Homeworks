@@ -1,0 +1,231 @@
+using System;
+
+namespace _2._Help_A_Mole
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = int.Parse(Console.ReadLine());
+
+            char[,] moleField = new char[size, size];
+
+            int moleRow = 0;
+            int moleCol = 0;
+
+            for(int row = 0; row < size; row++)
+            {
+                string input = Console.ReadLine();
+                for(int col = 0; col < size; col++)
+                {
+                    moleField[row, col] = input[col];
+                    if(moleField[row, col] == 'M')
+                    {
+                        moleField[row, col] = '-';
+                        moleRow = row;
+                        moleCol = col;
+                    }
+                }
+            }
+
+            int molePoints = 0;
+            string command;
+            //S - moves the mole to the Other S (-3 points) and both S's dissapear
+            //Random digits in the matrix with which the mole earns points
+
+            while((command = Console.ReadLine()) != "End" && molePoints < 25)
+            {              
+                if(command == "up")
+                {
+                    moleRow--;
+                    if(moleRow < 0)
+                    {
+                        Console.WriteLine("Don't try to escape the playing field!");
+                        moleRow++;
+                        continue;
+                    }
+                    else
+                    {
+                        if (moleField[moleRow, moleCol] == 'S')
+                        {
+                            moleField[moleRow, moleCol] = '-';
+                            for (int row = 0; row < size; row++)
+                            {
+                                for (int col = 0; col < size; col++)
+                                {
+                                    if (moleField[row, col] == 'S')
+                                    {
+                                        moleField[row, col] = '-';
+                                        moleRow = row;
+                                        moleCol = col;
+                                        break;
+                                    }                                   
+                                }
+                                break;
+                            }
+                            molePoints -= 3;
+                        }
+                        else if(moleField[moleRow, moleCol] == '-')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            string number = moleField[moleRow, moleCol].ToString();
+                            molePoints += int.Parse(number);
+                            moleField[moleRow, moleCol] = '-';
+                        }
+                    }
+                }
+                else if(command == "down")
+                {
+                    moleRow++;
+                    if (moleRow >= size)
+                    {
+                        Console.WriteLine("Don't try to escape the playing field!");
+                        moleRow--;
+                        continue;
+                    }
+                    else
+                    {
+                        if (moleField[moleRow, moleCol] == 'S')
+                        {
+                            moleField[moleRow, moleCol] = '-';
+                            for (int row = 0; row < size; row++)
+                            {
+                                for (int col = 0; col < size; col++)
+                                {
+                                    if (moleField[row, col] == 'S')
+                                    {
+                                        moleField[row, col] = '-';
+                                        moleRow = row;
+                                        moleCol = col;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                            molePoints -= 3;
+                        }
+                        else if (moleField[moleRow, moleCol] == '-')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            string number = moleField[moleRow, moleCol].ToString();
+                            molePoints += int.Parse(number);
+                            moleField[moleRow, moleCol] = '-';
+                        }
+                    }
+                }
+                else if (command == "left")
+                {
+                    moleCol--;
+                    if (moleCol < 0)
+                    {
+                        Console.WriteLine("Don't try to escape the playing field!");
+                        moleCol++;
+                        continue;
+                    }
+                    else
+                    {
+                        if (moleField[moleRow, moleCol] == 'S')
+                        {
+                            moleField[moleRow, moleCol] = '-';
+                            for (int row = 0; row < size; row++)
+                            {
+                                for (int col = 0; col < size; col++)
+                                {
+                                    if (moleField[row, col] == 'S')
+                                    {
+                                        moleField[row, col] = '-';
+                                        moleRow = row;
+                                        moleCol = col;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                            molePoints -= 3;
+                        }
+                        else if (moleField[moleRow, moleCol] == '-')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            string number = moleField[moleRow, moleCol].ToString();
+                            molePoints += int.Parse(number);
+                            moleField[moleRow, moleCol] = '-';
+                        }
+                    }
+                }
+                else if (command == "right")
+                {
+                    moleCol++;
+                    if (moleCol >= size)
+                    {
+                        Console.WriteLine("Don't try to escape the playing field!");
+                        moleCol--;
+                        continue;
+                    }
+                    else
+                    {
+                        if (moleField[moleRow, moleCol] == 'S')
+                        {
+                            moleField[moleRow, moleCol] = '-';
+                            for (int row = 0; row < size; row++)
+                            {
+                                for (int col = 0; col < size; col++)
+                                {
+                                    if (moleField[row, col] == 'S')
+                                    {
+                                        moleField[row, col] = '-';
+                                        moleRow = row;
+                                        moleCol = col;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                            molePoints -= 3;
+                        }
+                        else if (moleField[moleRow, moleCol] == '-')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            string number = moleField[moleRow, moleCol].ToString();
+                            molePoints += int.Parse(number);
+                            moleField[moleRow, moleCol] = '-';
+                        }
+                    }
+                }
+            }
+
+            moleField[moleRow, moleCol] = 'M';
+
+            if(molePoints >= 25)
+            {
+                Console.WriteLine("Yay! The Mole survived another game!");
+                Console.WriteLine($"The Mole managed to survive with a total of {molePoints} points.");
+            }
+            else
+            {
+                Console.WriteLine("Too bad! The Mole lost this battle!");
+                Console.WriteLine($"The Mole lost the game with a total of {molePoints} points.");
+            }
+
+            for(int row = 0; row < size; row++)
+            {
+                for(int col = 0; col < size; col++)
+                {
+                    Console.Write(moleField[row, col]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}

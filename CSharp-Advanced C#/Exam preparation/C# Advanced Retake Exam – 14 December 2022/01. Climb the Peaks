@@ -1,0 +1,85 @@
+
+Dictionary<string, int> mountainPeaks = new();
+mountainPeaks.Add("Vihren", 80);
+mountainPeaks.Add("Kutelo", 90);
+mountainPeaks.Add("Banski Suhodol", 100);
+mountainPeaks.Add("Polezhan", 60);
+mountainPeaks.Add("Kamenitza", 70);
+
+Stack<int> dailyFoodPortion = new();
+Queue<int> dailyStamina = new();
+
+int[] foodInput = Console.ReadLine()
+    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse)
+    .ToArray();
+
+int[] staminaInput = Console.ReadLine()
+    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+    .Select(int.Parse)
+    .ToArray();
+
+foreach (int food in foodInput)
+{
+
+    dailyFoodPortion.Push(food);
+
+}
+
+foreach (int stamina in staminaInput)
+{
+
+    dailyStamina.Enqueue(stamina);
+
+}
+
+List<string> conqueredMountainPeaks = new();
+int daysToClimb = 7;
+
+for (int i = 0; i < 7; i++)
+{
+    if(daysToClimb == 0)
+    {
+        break;
+    }
+    daysToClimb--;
+
+    if (dailyFoodPortion.Count == 0 && dailyStamina.Count == 0)
+    {
+        break;
+    }
+
+    if (conqueredMountainPeaks.Count == mountainPeaks.Count)
+    {
+        break;
+    }
+
+    int currentSum = dailyFoodPortion.Pop() + dailyStamina.Dequeue();
+
+    if(currentSum >= mountainPeaks.ElementAt(i).Value)
+    {
+        conqueredMountainPeaks.Add(mountainPeaks.ElementAt(i).Key);
+    }
+    else
+    {
+        i--;
+    }
+}
+
+if(conqueredMountainPeaks.Count == mountainPeaks.Count)
+{
+    Console.WriteLine("Alex did it! He climbed all top five Pirin peaks in one week -> @FIVEinAWEEK");
+}
+else
+{
+    Console.WriteLine("Alex failed! He has to organize his journey better next time -> @PIRINWINS");
+}
+
+if(conqueredMountainPeaks.Count > 0)
+{
+    Console.WriteLine("Conquered peaks:");
+    foreach(var peaks in conqueredMountainPeaks)
+    {
+        Console.WriteLine(peaks);
+    }
+}

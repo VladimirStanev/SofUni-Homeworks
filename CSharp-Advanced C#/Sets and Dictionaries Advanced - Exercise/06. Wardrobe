@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+
+namespace _06._Wardrobe
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, Dictionary<string, int>> wardrobe = new Dictionary<string, Dictionary<string, int>>();
+
+            int numberOfClothes = int.Parse(Console.ReadLine());
+
+            for(int i = 0; i < numberOfClothes; i++)
+            {
+                string[] allClothesInfo = Console.ReadLine()
+                    .Split(" -> ");
+                string colour = allClothesInfo[0];
+                string[] clothes = allClothesInfo[1].Split(",");
+
+                if(!wardrobe.ContainsKey(colour))
+                {
+                    wardrobe.Add(colour, new Dictionary<string, int>());
+                }
+
+                foreach (string item in clothes)
+                {
+                    if (!wardrobe[colour].ContainsKey(item))
+                    {
+                        wardrobe[colour].Add(item, 0);
+                    }
+                    wardrobe[colour][item]++;
+                }
+            }
+            string[] clothingToLookFor = Console.ReadLine().Split();
+            string colourToLook = clothingToLookFor[0];
+            string typeOfClothing = clothingToLookFor[1];
+
+            foreach (var colour in wardrobe)
+            {
+                Console.WriteLine($"{colour.Key} clothes:");
+
+                Dictionary<string, int> finalResults = colour.Value;
+
+                foreach (var item in finalResults)
+                {
+                    string output = $"* {item.Key} - {item.Value}";
+
+                    if (colourToLook == colour.Key && typeOfClothing == item.Key)
+                    {
+                        output += " (found!)";
+                    }
+
+                    Console.WriteLine(output);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.exe
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.deps.json
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.runtimeconfig.json
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.runtimeconfig.dev.json
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.dll
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\bin\Debug\netcoreapp3.1\Renovators.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.csproj.AssemblyReference.cache
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.AssemblyInfoInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.AssemblyInfo.cs
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.csproj.CoreCompileInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.dll
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-Advanced C#\Exam preparation\C# Advanced Exam - 25 June 2022\03. Renovators\obj\Debug\netcoreapp3.1\Renovators.genruntimeconfig.cache

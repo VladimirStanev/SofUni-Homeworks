@@ -1,0 +1,104 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace zadacha_tiles_master
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] numberOfWhiteTiles = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                                        .Select(int.Parse).ToArray();
+
+            int[] numberOfGreyTiles = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                                        .Select(int.Parse).ToArray();
+
+            Queue<int> greyTiles = new Queue<int>();
+            Stack<int> whiteTiles = new Stack<int>();
+
+            foreach (int tile in numberOfWhiteTiles)
+            {
+                whiteTiles.Push(tile);
+            }
+
+            foreach (int tile in numberOfGreyTiles)
+            {
+                greyTiles.Enqueue(tile);
+            }
+
+            Dictionary<string, int> tileInfo = new Dictionary<string, int>();
+            tileInfo.Add("Sink", 0);
+            tileInfo.Add("Oven", 0);
+            tileInfo.Add("Countertop", 0);
+            tileInfo.Add("Wall", 0);
+            tileInfo.Add("Floor", 0);
+
+            while (whiteTiles.Count > 0 && greyTiles.Count > 0)
+            {
+                if (greyTiles.Peek() == whiteTiles.Peek())
+                {
+                    int largerTile = whiteTiles.Peek() + greyTiles.Peek();
+
+                    if (largerTile == 40)
+                    {
+                        tileInfo["Sink"]++;
+                    }
+                    else if (largerTile == 50)
+                    {
+                        tileInfo["Oven"]++;
+                    }
+                    else if (largerTile == 60)
+                    {
+                        tileInfo["Countertop"]++;
+                    }
+                    else if (largerTile == 70)
+                    {
+                        tileInfo["Wall"]++;
+                    }
+                    else
+                    {
+                        tileInfo["Floor"]++;
+                    }
+                    whiteTiles.Pop();
+                    greyTiles.Dequeue();
+                }
+                else
+                {
+                    whiteTiles.Push(whiteTiles.Pop() / 2);
+                    greyTiles.Enqueue(greyTiles.Dequeue());
+                }
+            }
+
+            if (!whiteTiles.Any())
+            {
+                Console.WriteLine("White tiles left: none");
+            }
+            else
+            {
+                Console.WriteLine($"White tiles left: {string.Join(", ", whiteTiles)}");
+            }
+
+            if (!greyTiles.Any())
+            {
+                Console.WriteLine("Grey tiles left: none");
+            }
+            else
+            {
+                Console.WriteLine($"Grey tiles left: {string.Join(", ", greyTiles)}");
+            }
+
+            var sortedFinalPrint = tileInfo.OrderByDescending(x => x.Value).ThenBy(y => y.Key);
+
+            foreach (var element in sortedFinalPrint)
+            {
+                if (element.Value > 0)
+                {
+                    Console.WriteLine($"{element.Key}: {element.Value}");
+                    //Floor: 3
+                }
+            }
+        }
+    }
+}

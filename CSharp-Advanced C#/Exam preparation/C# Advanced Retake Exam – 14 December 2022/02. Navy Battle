@@ -1,0 +1,148 @@
+
+int size = int.Parse(Console.ReadLine());
+
+string[,] fieldOfBattle = new string[size, size];
+int currentPositinRow = 0;
+int currentPositinColumn = 0;
+
+for (int row = 0; row < size; row++)
+{
+    string rowInput = Console.ReadLine();
+    for (int col = 0; col < size; col++)
+    {
+        fieldOfBattle[row, col] = rowInput[col].ToString();
+        if (fieldOfBattle[row, col] == "S")
+        {
+            fieldOfBattle[row, col] = "-";
+            currentPositinColumn = col;
+            currentPositinRow = row;
+        }
+    }
+}
+
+bool battleIsGoing = true;
+int countOfMinesHit = 0;
+int battleCruisersDestroyed = 0;
+while (battleIsGoing = true)
+{
+    string command = Console.ReadLine();
+    if (command == "up")
+    {
+        currentPositinRow--;
+
+        if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "*")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            countOfMinesHit++;
+            if (countOfMinesHit == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine($"Mission failed, U-9 disappeared! Last known coordinates [{currentPositinRow}, {currentPositinColumn}]!");
+                break;
+            }
+        }
+        else if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "C")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            battleCruisersDestroyed++;
+            if (battleCruisersDestroyed == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine("Mission accomplished, U-9 has destroyed all battle cruisers of the enemy!");
+                break;
+            }
+        }
+
+    }
+    else if (command == "down")
+    {
+        currentPositinRow++;
+
+        if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "*")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            countOfMinesHit++;
+            if (countOfMinesHit == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine($"Mission failed, U-9 disappeared! Last known coordinates [{currentPositinRow}, {currentPositinColumn}]!");
+                break;
+            }
+        }
+        else if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "C")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            battleCruisersDestroyed++;
+            if (battleCruisersDestroyed == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine("Mission accomplished, U-9 has destroyed all battle cruisers of the enemy!");
+                break;
+            }
+        }
+    }
+    else if (command == "left")
+    {
+        currentPositinColumn--;
+
+        if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "*")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            countOfMinesHit++;
+            if (countOfMinesHit == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine($"Mission failed, U-9 disappeared! Last known coordinates [{currentPositinRow}, {currentPositinColumn}]!");
+                break;
+            }
+        }
+        else if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "C")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            battleCruisersDestroyed++;
+            if (battleCruisersDestroyed == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine("Mission accomplished, U-9 has destroyed all battle cruisers of the enemy!");
+                break;
+            }
+        }
+    }
+    else if (command == "right")
+    {
+        currentPositinColumn++;
+
+        if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "*")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            countOfMinesHit++;
+            if (countOfMinesHit == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine($"Mission failed, U-9 disappeared! Last known coordinates [{currentPositinRow}, {currentPositinColumn}]!");
+                break;
+            }
+        }
+        else if (fieldOfBattle[currentPositinRow, currentPositinColumn] == "C")
+        {
+            fieldOfBattle[currentPositinRow, currentPositinColumn] = "-";
+            battleCruisersDestroyed++;
+            if (battleCruisersDestroyed == 3)
+            {
+                battleIsGoing = false;
+                Console.WriteLine("Mission accomplished, U-9 has destroyed all battle cruisers of the enemy!");
+                break;
+            }
+        }
+    }
+}
+
+fieldOfBattle[currentPositinRow, currentPositinColumn] = "S";
+for (int i = 0; i < size; i++)
+{
+    for(int j = 0; j < size; j++)
+    {
+        Console.Write(fieldOfBattle[i, j]);
+    }
+    Console.WriteLine();
+}

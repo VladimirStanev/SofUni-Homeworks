@@ -1,0 +1,120 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._Barista_Contest
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] quantitiesOfCoffee = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+
+            int[] quantitiesOfMilk = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+
+            Stack<int> milk = new Stack<int>();
+            Queue<int> coffee = new Queue<int>();
+
+            foreach (int coffeeQuantity in quantitiesOfCoffee)
+            {
+                coffee.Enqueue(coffeeQuantity);
+            }
+            foreach(int milkQuantity in quantitiesOfMilk)
+            {
+                milk.Push(milkQuantity);
+            }
+
+            Dictionary<string, int> drinksMade = new Dictionary<string, int>();
+            drinksMade.Add("Cortado", 0);
+            drinksMade.Add("Espresso", 0);
+            drinksMade.Add("Capuccino", 0);
+            drinksMade.Add("Americano", 0);
+            drinksMade.Add("Latte", 0);
+
+            while(milk.Any() && coffee.Any())
+            {
+                int currentSumValue = coffee.Peek() + milk.Peek();
+                if(currentSumValue == 50)
+                {
+                    coffee.Dequeue();
+                    milk.Pop();
+                    drinksMade["Cortado"]++;
+                }
+                else if(currentSumValue == 75)
+                {
+                    coffee.Dequeue();
+                    milk.Pop();
+                    drinksMade["Espresso"]++;
+                }
+                else if (currentSumValue == 100)
+                {
+                    coffee.Dequeue();
+                    milk.Pop();
+                    drinksMade["Capuccino"]++;
+                }
+                else if (currentSumValue == 150)
+                {
+                    coffee.Dequeue();
+                    milk.Pop();
+                    drinksMade["Americano"]++;
+                }
+                else if (currentSumValue == 200)
+                {
+                    coffee.Dequeue();
+                    milk.Pop();
+                    drinksMade["Latte"]++;
+                }
+                else
+                {
+                    coffee.Dequeue();
+                    milk.Push(milk.Pop() - 5);
+                }
+            }
+            bool usedAll = false;
+            if(!milk.Any() && !coffee.Any())
+            {
+                usedAll = true;
+            }
+            
+            if(usedAll)
+            {
+                Console.WriteLine("Nina is going to win! She used all the coffee and milk!");
+            }
+            else
+            {
+                Console.WriteLine("Nina needs to exercise more! She didn't use all the coffee and milk!");
+            }
+
+            if(coffee.Any())
+            {
+                Console.WriteLine($"Coffee left: {String.Join(", ", coffee)}");
+            }
+            else
+            {
+                Console.WriteLine("Coffee left: none");
+            }
+
+            if (milk.Any())
+            {
+                Console.WriteLine($"Milk left: {String.Join(", ", milk)}");
+            }
+            else
+            {
+                Console.WriteLine("Milk left: none");
+            }
+
+            var orderedCombinations = drinksMade.OrderBy(x => x.Value).ThenByDescending(x => x.Key);
+
+            foreach(var combination in orderedCombinations)
+            {
+                if(combination.Value > 0)
+                {
+                    Console.WriteLine($"{combination.Key}: {combination.Value}");
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+
+namespace _05._Count_Symbols
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            SortedDictionary<char, int> characters = new();
+
+            foreach(var c in input)
+            {
+                if(!characters.ContainsKey(c))
+                {
+                    characters.Add(c, 0);
+                }
+                characters[c]++;
+            }
+
+            foreach(var chars in characters)
+            {
+                Console.WriteLine($"{chars.Key}: {chars.Value} time/s");
+            }
+        }
+    }
+}
