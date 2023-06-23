@@ -1,0 +1,15 @@
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\bin\Debug\net6.0\BookingApp.exe
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\bin\Debug\net6.0\BookingApp.deps.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\bin\Debug\net6.0\BookingApp.runtimeconfig.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\bin\Debug\net6.0\BookingApp.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\bin\Debug\net6.0\BookingApp.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.csproj.AssemblyReference.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.AssemblyInfoInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.AssemblyInfo.cs
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.csproj.CoreCompileInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\refint\BookingApp.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\BookingApp.genruntimeconfig.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\2023 booking app\obj\Debug\net6.0\ref\BookingApp.dll

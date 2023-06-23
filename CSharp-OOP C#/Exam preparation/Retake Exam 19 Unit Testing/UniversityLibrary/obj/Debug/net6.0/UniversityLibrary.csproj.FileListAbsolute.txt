@@ -1,0 +1,15 @@
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\bin\Debug\net6.0\UniversityLibrary.exe
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\bin\Debug\net6.0\UniversityLibrary.deps.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\bin\Debug\net6.0\UniversityLibrary.runtimeconfig.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\bin\Debug\net6.0\UniversityLibrary.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\bin\Debug\net6.0\UniversityLibrary.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.csproj.AssemblyReference.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.AssemblyInfoInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.AssemblyInfo.cs
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.csproj.CoreCompileInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\refint\UniversityLibrary.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\UniversityLibrary.genruntimeconfig.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Exam preparation\Retake Exam 19 Unit Testing\UniversityLibrary\obj\Debug\net6.0\ref\UniversityLibrary.dll

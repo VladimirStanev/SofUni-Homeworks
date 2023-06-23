@@ -1,0 +1,14 @@
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.exe
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.deps.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.runtimeconfig.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.runtimeconfig.dev.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\bin\Debug\netcoreapp3.1\Class box data.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.csproj.AssemblyReference.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.AssemblyInfoInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.AssemblyInfo.cs
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.csproj.CoreCompileInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Encapsulation - Exercise\Class box data\obj\Debug\netcoreapp3.1\Class box data.genruntimeconfig.cache

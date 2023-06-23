@@ -1,0 +1,15 @@
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\bin\Debug\net6.0\Zoo.exe
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\bin\Debug\net6.0\Zoo.deps.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\bin\Debug\net6.0\Zoo.runtimeconfig.json
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\bin\Debug\net6.0\Zoo.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\bin\Debug\net6.0\Zoo.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.csproj.AssemblyReference.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.AssemblyInfoInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.AssemblyInfo.cs
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.csproj.CoreCompileInputs.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\refint\Zoo.dll
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.pdb
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\Zoo.genruntimeconfig.cache
+D:\GitHub\SofUni-Homeworks\CSharp-OOP C#\Zoo\obj\Debug\net6.0\ref\Zoo.dll
